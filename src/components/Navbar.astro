@@ -1,0 +1,55 @@
+---
+interface NavItem {
+  label: string;
+  href: string;
+  icon: string;
+}
+
+const navItems: NavItem[] = [
+  {
+    label: "Home",
+    href: "#home",
+    icon: "",
+  },
+  {
+    label: "Projects",
+    href: "#projects",
+    icon: "",
+  },
+  {
+    label: "Contact",
+    href: "#contacs",
+    icon: "",
+  },
+];
+---
+
+<div class='flex justify-center w-full'>
+  <nav class='fixed left-1/2 backdrop-blur-2xl bg-amber-700'>
+    <ul>
+      {
+        navItems.map((item) => (
+          <li>
+            <a href={item.href}>
+              <span>{item.label}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</div>
+
+<script>
+  const primaryHeader = document.querySelector("");
+  const scrollWatcher = document.createElement("div");
+
+  scrollWatcher.setAttribute("data-scroll-watcher", "");
+  primaryHeader?.before(scrollWatcher);
+
+  const navObserver = new IntersectionObserver(() => {
+    primaryHeader?.classList.toggle("sticking");
+  });
+
+  navObserver.observe(scrollWatcher);
+</script>
