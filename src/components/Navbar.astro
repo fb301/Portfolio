@@ -26,7 +26,7 @@ const navItems: NavItem[] = [
 
 <div class='flex justify-center w-full'>
   <nav
-    class='header fixed left-1/2 -translate-x-1/2 z-[100] border border-transparent backdrop-blur-xl transition-all duration-500 ease-in-out md:top-6 md:bottom-auto bottom-0'
+    class='header fixed left-1/2 -translate-x-1/2 z-[100] md:top-6 md:bottom-auto bottom-0'
     id='grabber'
   >
     <div class='container mx-auto flex justify-center items-center p-3'>
@@ -38,9 +38,8 @@ const navItems: NavItem[] = [
             <li class='flex-1 md:flex-none'>
               <a
                 href={item.href}
-                class='flex flex-col items-center gap-1 text-[var(--white-icon)] transition-colors text-xs md:text-base relative group'
+                class='flex flex-col items-center gap-1 text-white transition-colors text-xs md:text-base relative group'
               >
-                <div class='absolute -left-6 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full transition-all duration-300 scale-0 opacity-0 bg-[#A9FF5B] nav-indicator hidden md:block' />
                 <span class='text-amber-50'>{item.label}</span>
               </a>
             </li>
@@ -52,41 +51,68 @@ const navItems: NavItem[] = [
 </div>
 
 <style>
+  :root {
+    --primary-1: hsla(250, 4%, 31%, 0.212);
+    --primary-2: hsla(260, 4%, 41%, 0.185);
+    --border-1: hsla(0, 3%, 46%, 0.25);
+    --border-2: hsla(0, 3%, 46%, 0.25);
+  }
+
   .header {
-    background-color: blue;
-    width: 100%;
-    min-width: 20%;
-    scale: 1 1;
-    transition: 300ms;
+    width: 52%;
+    min-width: 424px;
   }
 
   .sticking {
-    border-color: brown;
+    --border-width: 1.8px;
+    border-radius: 2rem;
+    backdrop-filter: blur(24px) brightness(90%) saturate(140%);
+  }
+
+  .sticking::before {
+    position: absolute;
+    content: "";
+    z-index: -1;
+    inset: 0;
+    border-radius: inherit;
+    border: var(--border-width) solid transparent;
+    backdrop-filter: brightness(180%) saturate(120%);
+    background: linear-gradient(var(--border-1), var(--border-2)) border-box;
+    mask:
+      linear-gradient(black, black) border-box,
+      linear-gradient(black, black) padding-box;
+    mask-composite: subtract;
   }
 </style>
 
 <script>
   const cssElement = document.getElementById("grabber");
+  const primaryHeader = document.querySelector(".header");
+  //   const scrollWatcher = document.createElement("div");
+
+  //   scrollWatcher.setAttribute("data-scroll-watcher", "");
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
+        console.log(entry);
         const ratio = entry.intersectionRatio;
         if (cssElement) {
           cssElement.style.width = `${Math.round(ratio * 100)}%`;
-          console.log(ratio);
         }
 
-        if (ratio < 1) {
-          cssElement?.classList.add("sticking");
-        } else if (ratio == 1) {
+        if (ratio != 1) {
+          //   cssElement?.classList.add("sticking");
+          primaryHeader?.classList.add("sticking");
+          //   primaryHeader?.classList.add("backdrop-blur-xl");
+        } else {
           cssElement?.classList.remove("sticking");
+          primaryHeader?.classList.remove("backdrop-blur-xl");
         }
       });
     },
     {
       threshold: Array.from({ length: 1000 }, (_, i) => i / 1000),
-      rootMargin: `20px 0px 0px 0px`,
     },
   );
 
