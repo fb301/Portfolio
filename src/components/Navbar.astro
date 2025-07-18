@@ -18,38 +18,80 @@ const navItems: NavItem[] = [
   },
   {
     label: "Contact",
-    href: "#contacs",
+    href: "#contacts",
     icon: "",
   },
 ];
 ---
 
 <div class='flex justify-center w-full'>
-  <nav class='fixed left-1/2 backdrop-blur-2xl bg-amber-700'>
-    <ul>
-      {
-        navItems.map((item) => (
-          <li>
-            <a href={item.href}>
-              <span>{item.label}</span>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+  <nav
+    class='header fixed left-1/2 -translate-x-1/2 z-[100] border border-transparent backdrop-blur-xl transition-all duration-500 ease-in-out md:top-6 md:bottom-auto bottom-0'
+    id='grabber'
+  >
+    <div class='container mx-auto flex justify-center items-center p-3'>
+      <ul
+        class='flex w-full justify-between md:space-x-6 md:justify-center md:gap-12 gap-6'
+      >
+        {
+          navItems.map((item) => (
+            <li class='flex-1 md:flex-none'>
+              <a
+                href={item.href}
+                class='flex flex-col items-center gap-1 text-[var(--white-icon)] transition-colors text-xs md:text-base relative group'
+              >
+                <div class='absolute -left-6 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full transition-all duration-300 scale-0 opacity-0 bg-[#A9FF5B] nav-indicator hidden md:block' />
+                <span class='text-amber-50'>{item.label}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </nav>
 </div>
 
+<style>
+  .header {
+    background-color: blue;
+    width: 100%;
+    min-width: 20%;
+    scale: 1 1;
+    transition: 300ms;
+  }
+
+  .sticking {
+    border-color: brown;
+  }
+</style>
+
 <script>
-  const primaryHeader = document.querySelector("");
-  const scrollWatcher = document.createElement("div");
+  const cssElement = document.getElementById("grabber");
 
-  scrollWatcher.setAttribute("data-scroll-watcher", "");
-  primaryHeader?.before(scrollWatcher);
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const ratio = entry.intersectionRatio;
+        if (cssElement) {
+          cssElement.style.width = `${Math.round(ratio * 100)}%`;
+          console.log(ratio);
+        }
 
-  const navObserver = new IntersectionObserver(() => {
-    primaryHeader?.classList.toggle("sticking");
-  });
+        if (ratio < 1) {
+          cssElement?.classList.add("sticking");
+        } else if (ratio == 1) {
+          cssElement?.classList.remove("sticking");
+        }
+      });
+    },
+    {
+      threshold: Array.from({ length: 1000 }, (_, i) => i / 1000),
+      rootMargin: `20px 0px 0px 0px`,
+    },
+  );
 
-  navObserver.observe(scrollWatcher);
+  const box = document.getElementById("hallo");
+  if (box) {
+    observer.observe(box);
+  }
 </script>

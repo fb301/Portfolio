@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+html {
+  background-color: #101010;
+}
+
+p {
+  color: #f2f2f2;
+}
+
+/* .primary-header {
+  --_bg: #111;
+}
+
+.primary-header.sticking {
+  --_bg: #000;
+} */
