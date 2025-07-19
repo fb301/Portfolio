@@ -2,4 +2,62 @@
 
 ---
 
-<style></style>
+<section class='text-[var(--white)] mt-12 md:mt-0' id='contact'>
+  <div class='max-w-5xl mx-auto p-12'>
+    <div class='contact-form'>
+      <div class='flow'>
+        <h1>Let's chat!</h1><p>
+          Please provide your contact details and I'll be in touch as soon as
+          possible.
+        </p>
+      </div>
+      <form>
+        <div class='form-group'>
+          <label for='name'>Name</label>
+          <input type='text' required />
+        </div>
+        <div class='form-group'>
+          <label for='email'>Email</label>
+          <input type='email' required />
+        </div>
+        <div class='form-group'>
+          <label for='message'>Message</label>
+          <input type='text' required />
+        </div>
+        <button>Send</button>
+      </form>
+    </div>
+  </div>
+</section>
+<style>
+  input,
+  button,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  form {
+    display: grid;
+    gap: 1rem;
+
+    @media (width > 720px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .form-group {
+    display: grid;
+  }
+
+  .contact-form {
+    display: grid;
+    gap: 1rem;
+
+    background-color: var(--surface-1);
+    padding: 3rem;
+    border-radius: 24px;
+    width: min(100% - 4rem, 1200px);
+    margin-inline: auto;
+  }
+</style>
