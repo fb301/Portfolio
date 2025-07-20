@@ -4,8 +4,18 @@ html {
   background-color: #101010;
 }
 
+body {
+  font-family: system-ui;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
 p {
   color: #f2f2f2;
+}
+
+section {
+  padding-block: 3rem;
 }
 
 /* .primary-header {

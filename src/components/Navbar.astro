@@ -22,6 +22,9 @@ const navItems: NavItem[] = [
     icon: "",
   },
 ];
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/"
 ---
 
 <div class='flex justify-center w-full'>
@@ -34,22 +37,20 @@ const navItems: NavItem[] = [
         class='flex w-full justify-between md:space-x-6 md:justify-center md:gap-12 gap-6'
       >
         {
-          navItems.map((item) => (
-            <li class='flex-1 md:flex-none'>
-              <a
-                href={item.href}
-                class='flex flex-col items-center gap-1 text-white transition-colors text-xs md:text-base relative group'
-              >
-                <span class='text-amber-50'>{item.label}</span>
-              </a>
-            </li>
+          navItems.map((navItem) => (
+            <a
+              href={navItem.href}
+              class={currentPath == navItem.href ? "active" : ""}
+            >
+              {navItem.label}
+            </a>
           ))
         }
       </ul>
     </div>
   </nav>
 </div>
-
+<!-- flex flex-col items-center gap-1 font-semibold text-white/90 text-xs md:text-base _relative _group" -->
 <style>
   :root {
     --primary-1: hsla(250, 4%, 31%, 0.212);
@@ -58,15 +59,29 @@ const navItems: NavItem[] = [
     --border-2: hsla(0, 3%, 46%, 0.25);
   }
 
+  a {
+    color: aqua;
+  }
+
+  nav a:active {
+    color: aliceblue !important;
+  }
+
+  a[aria-current="page"] {
+    color: white !important;
+    font-weight: bold;
+  }
+
   .header {
     width: 52%;
     min-width: 424px;
+    transition: 400ms;
   }
 
   .sticking {
-    --border-width: 1.8px;
-    border-radius: 2rem;
-    backdrop-filter: blur(36px) brightness(90%) saturate(140%);
+    --border-width: 2px;
+    border-radius: 3rem;
+    backdrop-filter: blur(36px) brightness(80%) sepia(20%) saturate(120%);
   }
 
   .sticking::before {
@@ -77,10 +92,10 @@ const navItems: NavItem[] = [
     border-radius: inherit;
     border: var(--border-width) solid transparent;
     backdrop-filter: brightness(180%) saturate(120%);
-    background: linear-gradient(var(--border-1), var(--border-2)) border-box;
+    background: radial-gradient(var(--border-1), var(--border-2)) border-box;
     mask:
-      linear-gradient(black, black) border-box,
-      linear-gradient(black, black) padding-box;
+      radial-gradient(black, black) border-box,
+      radial-gradient(black, black) padding-box;
     mask-composite: subtract;
   }
 </style>
