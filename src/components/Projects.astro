@@ -1,0 +1,9 @@
+---
+const allProjects = await Astro.glob("../content/projects/*.md");
+---
+
+<section class='text-[var(--white)] mt-12 md:mt-0' id='projects'>
+  <div>
+    {allProjects.map((project) => <p>{project.frontmatter.name}</p>)}
+  </div>
+</section>

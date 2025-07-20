@@ -1,7 +1,7 @@
 <section class='text-[var(--white)] mt-12 md:mt-10' id='home'>
   <div class='hallo' id='hallo'>
     <section class='diagonal'>
-      <div class='max-w-4xl mx-auto md:py-24 p-8'>
+      <div class='max-w-5xl mx-auto md:py-24'>
         <div class='grid grid-cols-2'>
           <div class='text-left'>
             <p class='text-md md:text-lg'>Hi, my name is Fredrik.</p>
@@ -31,35 +31,27 @@
       </div>
     </section>
   </div>
-
-  <style>
-    .diagonal {
-      --skew-angle: -4deg;
-      --background: linear-gradient(
-        90deg,
-        rgba(42, 123, 155, 1) 0%,
-        rgba(87, 199, 133, 1) 50%,
-        rgba(237, 221, 83, 1) 100%
-      );
-
-      position: relative;
-      isolation: isolate;
-    }
-
-    .diagonal::after {
-      content: "";
-      background: var(--background);
-      position: absolute;
-      z-index: -50;
-      inset: 0;
-      transform: skewY(var(--skew-angle));
-    }
-  </style>
-  <!-- <div class='max-w-5xl mx-auto p-12'>
-    <div class='flex h-screen flex-col'>
-      <div class='m-auto gap-100'>
-        <div></div>
-      </div>
-    </div>
-  </div> -->
 </section>
+<style>
+  .diagonal {
+    --skew-angle: -4deg;
+    --background: linear-gradient(
+      90deg,
+      rgba(42, 123, 155, 1) 0%,
+      rgba(87, 199, 133, 1) 50%,
+      rgba(237, 221, 83, 1) 100%
+    );
+
+    position: relative;
+    isolation: isolate;
+  }
+
+  .diagonal::after {
+    content: "";
+    background: var(--background);
+    position: absolute;
+    z-index: -50;
+    inset: 0;
+    transform: skewY(var(--skew-angle));
+  }
+</style>
