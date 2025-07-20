@@ -1,5 +1,5 @@
 ---
 name: Munamii Cakery
 type: Website
-imageUrl:
+image: ..\..\..\public\projectPictures\oskar-kadaksoo-yxU--QW33GM-unsplash.jpg
 ---
