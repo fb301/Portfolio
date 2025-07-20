@@ -14,15 +14,19 @@
       <form>
         <div class='form-group'>
           <label for='name'>Name</label>
-          <input type='text' required />
+          <input placeholder='Your Name' type='text' required />
         </div>
         <div class='form-group'>
           <label for='email'>Email</label>
-          <input type='email' required />
+          <input placeholder='email@adress.com' type='email' required />
         </div>
         <div class='form-group'>
           <label for='message'>Message</label>
-          <input type='text' required />
+          <input
+            placeholder="Hi, I love your work, let's talk more!"
+            type='text'
+            required
+          />
         </div>
         <button>Send</button>
       </form>
@@ -40,10 +44,36 @@
   form {
     display: grid;
     gap: 1rem;
+
+    @media width > 720px {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   .form-group {
     display: grid;
+  }
+  label {
+    text-transform: uppercase;
+    font-size: 1rem;
+  }
+
+  input {
+    background: var(--surface-2);
+    color: var(--text-1);
+    border: var(--border);
+    border-radius: 16px;
+    padding: 1ex 2ex;
+
+    accent-color: var(--accent);
+  }
+
+  input:not(:placeholder-shown)valid {
+    outline-color: var(--color-lime-700);
+  }
+
+  input:not(:placeholder-shown)invalid {
+    outline-color: var(--color-red-900);
   }
 
   .contact-form {
@@ -55,5 +85,34 @@
     border-radius: 24px;
     width: min(100% - 4rem, 1200px);
     margin-inline: auto;
+  }
+
+  button {
+    cursor: pointer;
+    background-color: var(--accent);
+    color: var(--text-1);
+    padding: 1em 1.5em;
+    border: 0;
+    border-radius: 16px;
+
+    &:hover,
+    &:focus-visible {
+      background-color: hsl(from var(--accent) h s 30%);
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+  :root {
+    --surface-0: hsl(229, 41%, 5%);
+    --surface-1: hsl(229, 25%, 12%);
+    --surface-2: hsl(234, 26%, 16%);
+    --text-1: hsl(229, 12%, 100%);
+    --text-2: hsl(229, 12%, 66%);
+    --required: hsl(321, 32%, 56%);
+    --accent: hsl(262, 84%, 52%);
+    --border: 1px solid hsl(229, 22%, 19%);
   }
 </style>

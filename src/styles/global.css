@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 html {
-  background-color: #101010;
+  background-color: #222;
 }
 
 body {
@@ -17,11 +17,3 @@ p {
 section {
   padding-block: 3rem;
 }
-
-/* .primary-header {
-  --_bg: #111;
-}
-
-.primary-header.sticking {
-  --_bg: #000;
-} */

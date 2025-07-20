@@ -6,9 +6,11 @@ import tailwindcss from "@tailwindcss/vite";
 
 import netlify from "@astrojs/netlify";
 
+import playformCompress from "@playform/compress";
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react()],
+  integrations: [react(), playformCompress()],
   vite: { plugins: [tailwindcss()] },
   adapter: netlify(),
 });
