@@ -3,34 +3,28 @@
 ---
 
 <section class='' id='contact'>
-  <div class=''>
-    <div class='contact-form'>
-      <div class='flow'>
-        <h1>Let's chat!</h1><p>
-          Please provide your contact details and I'll be in touch as soon as
-          possible.
-        </p>
-      </div>
-      <form name='contact' ?netlify>
-        <div class='form-group'>
-          <label for='name'>Name</label>
-          <input placeholder='Your Name' type='text' required />
-        </div>
-        <div class='form-group'>
-          <label for='email'>Email</label>
-          <input placeholder='email@adress.com' type='email' required />
-        </div>
-        <div class='form-group'>
-          <label for='message'>Message</label>
-          <input
-            placeholder="Hi, I love your work, let's talk more!"
-            type='text'
-            required
-          />
-        </div>
-        <button type='submit'>Send</button>
-      </form>
+  <div class='contact-form'>
+    <div class='flow'>
+      <h1>Lets chat!</h1><p>
+        Please provide your contact details and I will be in touch as soon as
+        possible.
+      </p>
     </div>
+    <form name='contact' data-netlify='true'>
+      <div class='form-group'>
+        <label for='name'>Name</label>
+        <input placeholder='Your Name' type='text' required />
+      </div>
+      <div class='form-group'>
+        <label for='email'>Email</label>
+        <input placeholder='email@adress.com' type='email' required />
+      </div>
+      <div class='form-group'>
+        <label for='message'>Message</label>
+        <input placeholder='Hi, I love your work!' type='text' required />
+      </div>
+      <button type='submit'>Send</button>
+    </form>
   </div>
 </section>
 
