@@ -3,44 +3,47 @@
 ---
 
 <section class='' id='contact'>
-  <div class='contact-form'>
-    <div class='flow'>
-      <h1>Lets chat!</h1><p>
-        Please provide your contact details and I will be in touch as soon as
-        possible.
-      </p>
+  <div class='wrapper'>
+    <div class='contact-form'>
+      <div class='flow'>
+        <h1>Lets chat!</h1><p>
+          Please provide your contact details and I will be in touch as soon as
+          possible.
+        </p>
+      </div>
+      <form
+        name='contact'
+        method='POST'
+        netlify-honeypot='bot-field'
+        data-netlify='true'
+      >
+        <input type='hidden' name='form-name' value='contact' />
+        <div class='form-group'>
+          <label for='name'>Name</label>
+          <input placeholder='Your Name' id='name' type='text' required />
+        </div>
+        <div class='form-group'>
+          <label for='email'>Email</label>
+          <input
+            placeholder='email@adress.com'
+            id='email'
+            type='email'
+            required
+          />
+        </div>
+        <div class='form-group'>
+          <label for='message'>Message</label>
+          <textarea placeholder='Hi, I love your work!' required></textarea>
+        </div>
+        <label class='hidden'>
+          Don’t fill this out if you’re human: <input
+            name='bot-field'
+            type='text'
+          />
+        </label>
+        <button type='submit'>Send</button>
+      </form>
     </div>
-    <form
-      name='contact'
-      method='POST'
-      netlify-honeypot='bot-field'
-      data-netlify='true'
-    >
-      <div class='form-group'>
-        <label for='name'>Name</label>
-        <input placeholder='Your Name' id='name' type='text' required />
-      </div>
-      <div class='form-group'>
-        <label for='email'>Email</label>
-        <input
-          placeholder='email@adress.com'
-          id='email'
-          type='email'
-          required
-        />
-      </div>
-      <div class='form-group'>
-        <label for='message'>Message</label>
-        <textarea placeholder='Hi, I love your work!' required></textarea>
-      </div>
-      <label class='hidden'>
-        Don’t fill this out if you’re human: <input
-          name='bot-field'
-          type='text'
-        />
-      </label>
-      <button type='submit'>Send</button>
-    </form>
   </div>
 </section>
 
@@ -50,6 +53,14 @@
   select,
   textarea {
     font: inherit;
+  }
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    justify-content: center;
   }
 
   form {
@@ -143,6 +154,16 @@
   * {
     box-sizing: border-box;
     margin: 0;
+  }
+
+  .hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
   }
   :root {
     --surface-0: hsl(229, 41%, 5%);
