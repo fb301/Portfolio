@@ -15,8 +15,14 @@
         name='contactform'
         method='POST'
         netlify-honeypot='bot-field'
-        data-netlify='true'
+        ?netlify
       >
+        <label class='hidden'>
+          Dont fill this out if youre human: <input
+            name='bot-field'
+            type='text'
+          />
+        </label>
         <input type='hidden' name='form-name' value='contactform' />
         <div class='form-group'>
           <label for='name'>Name</label>
@@ -35,12 +41,7 @@
           <label for='message'>Message</label>
           <textarea placeholder='Hi, I love your work!' required></textarea>
         </div>
-        <label class='hidden'>
-          Dont fill this out if youre human: <input
-            name='bot-field'
-            type='text'
-          />
-        </label>
+
         <button type='submit'>Send</button>
       </form>
     </div>

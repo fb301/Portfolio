@@ -12,5 +12,10 @@ import playformCompress from "@playform/compress";
 export default defineConfig({
   integrations: [react(), playformCompress()],
   vite: { plugins: [tailwindcss()] },
-  adapter: netlify(),
+  adapter: netlify({
+    devFeatures: {
+      environmentVariables: true,
+      images: false,
+    },
+  }),
 });
