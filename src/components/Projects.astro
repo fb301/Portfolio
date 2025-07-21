@@ -22,6 +22,11 @@ const allProjects = await Astro.glob("../content/projects/*.md");
     grid-template-columns: repeat(4, 1fr);
   }
 
+  img {
+    display: block;
+    max-inline-size: 100%;
+  }
+
   .cards {
     display: grid;
     grid-template-rows: min-content 1fr;
