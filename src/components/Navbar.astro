@@ -62,7 +62,9 @@ const currentPath = pathname.slice(1);
   }
 
   a {
-    color: blanchedalmond;
+    color: #f9f6ee;
+    font-weight: 666;
+    text-shadow: 2px 2px 0px #1b1212;
   }
 
   nav a:active {
@@ -83,7 +85,7 @@ const currentPath = pathname.slice(1);
   .sticking {
     --border-width: 2px;
     border-radius: 3rem;
-    backdrop-filter: blur(8px) brightness(90%) saturate(120%);
+    backdrop-filter: blur(12px) brightness(90%) saturate(120%);
   }
 
   .sticking::before {
@@ -93,7 +95,7 @@ const currentPath = pathname.slice(1);
     inset: 0;
     border-radius: inherit;
     border: var(--border-width) solid transparent;
-    backdrop-filter: brightness(180%) saturate(120%);
+    /* backdrop-filter: brightness(180%) saturate(120%); */
     background: radial-gradient(var(--border-1), var(--border-2)) border-box;
     mask:
       radial-gradient(black, black) border-box,
