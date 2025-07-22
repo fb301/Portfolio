@@ -44,11 +44,11 @@ const allProjects = await Astro.glob("../content/projects/*.md");
   .card {
     display: grid;
     align-items: center;
-    border-radius: 3rem;
+
     justify-content: center;
-    border-width: 2px;
+
     box-sizing: border-box;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4); */
   }
 
   .card-name {
@@ -67,6 +67,8 @@ const allProjects = await Astro.glob("../content/projects/*.md");
 
   .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
+    border-radius: 3rem;
+    border-width: 2px;
   }
   .container img {
     border: 2px solid;
