@@ -3,24 +3,22 @@ const allProjects = await Astro.glob("../content/projects/*.md");
 ---
 
 <section class='text-[var(--white)] mt-12 md:mt-0' id='projects'>
-  <div class='diagonal'>
-    <div class='card-grid'>
-      {
-        allProjects.map((project) => (
-          <div class='card'>
-            <div class='container'>
-              <img
-                src={project.frontmatter.image}
-                alt={project.frontmatter.name}
-              />
-            </div>
-            <div class='wrapper'>
-              <p class='card-name'>{project.frontmatter.name}</p>
-            </div>
+  <div class='card-grid'>
+    {
+      allProjects.map((project) => (
+        <div class='card'>
+          <div class='container'>
+            <img
+              src={project.frontmatter.image}
+              alt={project.frontmatter.name}
+            />
           </div>
-        ))
-      }
-    </div>
+          <div class='wrapper'>
+            <p class='card-name'>{project.frontmatter.name}</p>
+          </div>
+        </div>
+      ))
+    }
   </div>
 </section>
 
@@ -32,12 +30,6 @@ const allProjects = await Astro.glob("../content/projects/*.md");
   }
 
   .card-grid {
-    /* display: grid;
-    /* height: min(100% - 4rem, 1200px); */
-    /* grid-column: 2;
-    grid-rows: 200px;
-    gap: 1rem;
-    justify-content: center; */
     margin: 20px auto;
     width: min(100% - 4rem, 1200px);
     height: min(100% - 4rem, 1200px);

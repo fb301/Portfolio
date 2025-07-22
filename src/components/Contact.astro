@@ -2,7 +2,7 @@
 
 ---
 
-<section class='' id='contact'>
+<section id='contact'>
   <div class='wrapper'>
     <div class='contact-form'>
       <div class='flow'>
@@ -49,6 +49,11 @@
 </section>
 
 <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
   input,
   button,
   select,
@@ -57,21 +62,24 @@
   }
 
   .wrapper {
-    display: grid;
-    grid-template-columns: auto;
+    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     padding-top: 20px;
     padding-bottom: 20px;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
   }
 
   form {
     display: grid;
+    grid-template-columns: subgrid;
+    align-items: center;
     gap: 1rem;
   }
 
   .form-group {
     display: grid;
+    grid-template-columns: subgrid;
   }
 
   h1 {
@@ -105,23 +113,14 @@
     outline-color: rgba(218, 85, 85, 1);
   }
 
-  /* .contact-form {
-    display: grid;
-    gap: 1rem;
-
-    background-color: var(--surface-1);
-    padding: 3rem;
-    border-radius: 24px;
-    width: min(100% - 4rem, 1200px);
-    margin-inline: auto;
-  } */
-
   .contact-form {
     padding: 3rem;
     --border-width: 2px;
     border-radius: 3rem;
     backdrop-filter: blur(36px) brightness(80%) sepia(20%) saturate(120%);
     width: min(100% - 4rem, 1200px);
+    align-items: center;
+    justify-content: center;
   }
 
   .contact-form::before {
@@ -137,6 +136,8 @@
       radial-gradient(black, black) border-box,
       radial-gradient(black, black) padding-box;
     mask-composite: subtract;
+    align-items: center;
+    justify-content: center;
   }
 
   button {
