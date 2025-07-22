@@ -1,5 +1,5 @@
 ---
 name: Placeholder
 type: Website
-image: /projectPictures/milad-fakurian-Hqkx4vRhrIU-unsplash_480x720.webp
+image: /src/assets/pictures/milad-fakurian-Hqkx4vRhrIU-unsplash_480x720.webp
 ---

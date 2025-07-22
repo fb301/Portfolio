@@ -1,5 +1,6 @@
 ---
 const allProjects = await Astro.glob("../content/projects/*.md");
+import { Image } from "astro:assets";
 ---
 
 <section id='projects'>
@@ -9,7 +10,7 @@ const allProjects = await Astro.glob("../content/projects/*.md");
         allProjects.map((project) => (
           <div class='card'>
             <div class='container'>
-              <img
+              <Image
                 src={project.frontmatter.image}
                 alt={project.frontmatter.name}
               />
