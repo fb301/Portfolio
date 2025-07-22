@@ -13,6 +13,7 @@ import { Image } from "astro:assets";
               <Image
                 src={project.frontmatter.image}
                 alt={project.frontmatter.name}
+                loading='eager'
               />
             </div>
             <div class='wrapper'>
