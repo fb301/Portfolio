@@ -24,7 +24,7 @@ const navItems: NavItem[] = [
 ];
 
 const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.slice(1); // remove the first "/"
+const currentPath = pathname.slice(1);
 ---
 
 <div class='flex justify-center w-full'>
@@ -38,19 +38,21 @@ const currentPath = pathname.slice(1); // remove the first "/"
       >
         {
           navItems.map((navItem) => (
-            <a
-              href={navItem.href}
-              class={currentPath == navItem.href ? "active" : ""}
-            >
-              {navItem.label}
-            </a>
+            <li>
+              <a
+                href={navItem.href}
+                class={currentPath == navItem.href ? "active" : ""}
+              >
+                {navItem.label}
+              </a>
+            </li>
           ))
         }
       </ul>
     </div>
   </nav>
 </div>
-<!-- flex flex-col items-center gap-1 font-semibold text-white/90 text-xs md:text-base _relative _group" -->
+
 <style>
   :root {
     --primary-1: hsla(250, 4%, 31%, 0.212);
@@ -103,9 +105,6 @@ const currentPath = pathname.slice(1); // remove the first "/"
 <script>
   const cssElement = document.getElementById("grabber");
   const primaryHeader = document.querySelector(".header");
-  //   const scrollWatcher = document.createElement("div");
-
-  //   scrollWatcher.setAttribute("data-scroll-watcher", "");
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -117,12 +116,9 @@ const currentPath = pathname.slice(1); // remove the first "/"
         }
 
         if (ratio != 1) {
-          //   cssElement?.classList.add("sticking");
           primaryHeader?.classList.add("sticking");
-          //   primaryHeader?.classList.add("backdrop-blur-xl");
         } else {
           cssElement?.classList.remove("sticking");
-          primaryHeader?.classList.remove("backdrop-blur-xl");
         }
       });
     },

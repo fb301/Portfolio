@@ -62,6 +62,7 @@
     padding-top: 20px;
     padding-bottom: 20px;
     justify-content: center;
+    align-items: center;
   }
 
   form {
@@ -97,11 +98,11 @@
   }
 
   input:not(:placeholder-shown)valid {
-    outline-color: var(--color-lime-700);
+    outline-color: rgba(87, 199, 133, 1);
   }
 
   input:not(:placeholder-shown)invalid {
-    outline-color: var(--color-red-900);
+    outline-color: rgba(218, 85, 85, 1);
   }
 
   /* .contact-form {
@@ -175,27 +176,5 @@
     --required: hsl(321, 32%, 56%);
     --accent: hsl(262, 84%, 52%);
     --border: 1px solid hsl(229, 22%, 19%);
-  }
-
-  .diagonal {
-    --skew-angle: 3deg;
-    --background: linear-gradient(
-      90deg,
-      rgba(42, 123, 155, 1) 0%,
-      rgba(87, 199, 133, 1) 50%,
-      rgba(237, 221, 83, 1) 100%
-    );
-
-    position: relative;
-    isolation: isolate;
-  }
-
-  .diagonal::after {
-    content: "";
-    background: var(--background);
-    position: absolute;
-    z-index: -50;
-    inset: 0;
-    transform: skewY(var(--skew-angle));
   }
 </style>
