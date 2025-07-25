@@ -1,17 +1,25 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 
-import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 
 import netlify from "@astrojs/netlify";
 
 import playformCompress from "@playform/compress";
+import { visualizer } from "rollup-plugin-visualizer";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), playformCompress()],
-  vite: { plugins: [tailwindcss()] },
+  integrations: [playformCompress()],
+  vite: {
+    plugins: [
+      tailwindcss(),
+      visualizer({
+        emitFile: true,
+        filename: "stats.html",
+      }),
+    ],
+  },
   adapter: netlify({
     devFeatures: {
       environmentVariables: true,

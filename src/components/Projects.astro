@@ -1,5 +1,6 @@
 ---
 import Card from "../components/Card.astro";
+
 interface Project {
   name: string;
   image: string;
@@ -39,16 +40,21 @@ const projects: Project[] = [
       }
     </div>
   </div>
+  <hr class='solid' />
 </section>
 
 <style>
   * {
     margin: 0;
-    padding: 0;
+    padding: 20px;
     box-sizing: border-box;
   }
 
+  hr.solid {
+    border-top: 3px solid #bbb;
+  }
   .flex {
+    display: flex;
     margin: auto;
     padding-bottom: 20px;
   }
@@ -63,5 +69,6 @@ const projects: Project[] = [
     grid-column-gap: 20px;
     grid-row-gap: 20px;
     justify-content: center;
+    padding-bottom: 20px;
   }
 </style>

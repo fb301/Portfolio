@@ -28,27 +28,26 @@ const currentPath = pathname.slice(1);
 ---
 
 <div class='flex justify-center w-full'>
-  <nav
-    class='header fixed left-1/2 -translate-x-1/2 z-[100] md:top-6 md:bottom-auto bottom-0'
-    id='grabber'
-  >
-    <div class='container mx-auto flex justify-center items-center p-3'>
-      <ul
-        class='flex w-full justify-between md:space-x-6 md:justify-center md:gap-12 gap-6'
-      >
-        {
-          navItems.map((navItem) => (
-            <li>
-              <a
-                href={navItem.href}
-                class={currentPath == navItem.href ? "active" : ""}
-              >
-                {navItem.label}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
+  <nav class='z-[100] md:top-6 md:bottom-auto bottom-0'>
+    <div class='nav-grabber' id='grabber'>
+      <div class='container mx-auto flex justify-center items-center p-3'>
+        <ul
+          class='flex w-full justify-between md:space-x-6 md:justify-center md:gap-12 gap-6'
+        >
+          {
+            navItems.map((navItem) => (
+              <li>
+                <a
+                  href={navItem.href}
+                  class={currentPath == navItem.href ? "active" : ""}
+                >
+                  {navItem.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
     </div>
   </nav>
 </div>
@@ -67,6 +66,28 @@ const currentPath = pathname.slice(1);
     text-shadow: 2px 2px 0px #000000;
   }
 
+  .nav-grabber {
+    /* width: 1000px; */
+    min-width: 424px;
+    transition: 300ms ease;
+    left: calc(1 / 2 * 100%);
+    justify-content: center;
+    position: fixed;
+    translate: calc(calc(1 / 2 * 100%) /* 50% */ * -1);
+  }
+
+  nav {
+    /* border: 2px solid transparent;
+    border-radius: 3rem; */
+    min-width: 424px;
+    transition: 300ms ease;
+    left: calc(1 / 2 * 100%);
+    justify-content: center;
+    position: fixed;
+
+    translate: calc(calc(1 / 2 * 100%) /* 50% */ * -1);
+  }
+
   nav a:active {
     color: aliceblue !important;
   }
@@ -76,16 +97,11 @@ const currentPath = pathname.slice(1);
     font-weight: bold;
   }
 
-  .header {
-    width: 52%;
-    min-width: 424px;
-    transition: 400ms;
-  }
-
   .sticking {
     --border-width: 2px;
     border-radius: 3rem;
     backdrop-filter: blur(12px) brightness(90%) saturate(120%);
+    transition: 300ms ease;
   }
 
   .sticking::before {
@@ -95,7 +111,6 @@ const currentPath = pathname.slice(1);
     inset: 0;
     border-radius: inherit;
     border: var(--border-width) solid transparent;
-    /* backdrop-filter: brightness(180%) saturate(120%); */
     background: radial-gradient(var(--border-1), var(--border-2)) border-box;
     mask:
       radial-gradient(black, black) border-box,
@@ -106,7 +121,6 @@ const currentPath = pathname.slice(1);
 
 <script>
   const cssElement = document.getElementById("grabber");
-  const primaryHeader = document.querySelector(".header");
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -114,11 +128,12 @@ const currentPath = pathname.slice(1);
         console.log(entry);
         const ratio = entry.intersectionRatio;
         if (cssElement) {
-          cssElement.style.width = `${Math.round(ratio * 80)}%`;
+          console.log(ratio);
+          cssElement.style.width = `${Math.round(ratio * 150)}%`;
         }
 
         if (ratio != 1) {
-          primaryHeader?.classList.add("sticking");
+          cssElement?.classList.add("sticking");
         } else {
           cssElement?.classList.remove("sticking");
         }

@@ -19,7 +19,7 @@ if (!images[imagePath])
   );
 ---
 
-<div class='card'>
+<div class='card card-hidden'>
   <div class='container'>
     <Image src={images[imagePath]()} alt={altText} loading='eager' />
   </div>
@@ -40,6 +40,10 @@ if (!images[imagePath])
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
+    padding-bottom: 20px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
+    border-radius: 3rem;
+    border-width: 2px;
   }
 
   .card-name {
@@ -57,9 +61,7 @@ if (!images[imagePath])
   }
 
   .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
-    border-radius: 3rem;
-    border-width: 2px;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.6);
   }
   .container img {
     border: 2px solid;
