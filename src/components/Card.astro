@@ -21,7 +21,7 @@ if (!images[imagePath])
 
 <div class='card card-hidden'>
   <div class='container'>
-    <Image src={images[imagePath]()} alt={altText} loading='eager' />
+    <Image src={images[imagePath]()} alt={altText} loading='lazy' />
   </div>
   <div class='wrapper'>
     <p class='card-name'>{name}</p>
