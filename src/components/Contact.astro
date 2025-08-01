@@ -1,215 +1,122 @@
-<section class='content-grid' id='contact'>
-  <div class='wrapper'>
-    <div class='contact-form'>
-      <div class='flow'>
-        <h1>Lets chat!</h1><p>
-          Please provide your contact details and I will be in touch as soon as
-          possible.
-        </p>
-      </div>
-      <form
-        name='contactform'
-        method='POST'
-        netlify-honeypot='bot-field'
-        data-netlify='true'
-      >
-        <label class='hidden'>
-          Dont fill this out if youre human: <input
-            name='bot-field'
-            type='text'
-          />
-        </label>
-        <input type='hidden' name='form-name' value='contactform' />
-        <div class='form-group'>
-          <label for='name'>Name</label>
-          <input placeholder='Your Name' id='name' type='text' required />
+<div class='wrapper'>
+  <div class='container'>
+    <form action='action_page.php'>
+      <div class='row'>
+        <div class='col-25'>
+          <label for='fname'>Full Name</label>
         </div>
-        <div class='form-group'>
-          <label for='email'>Email</label>
+        <div class='col-75'>
           <input
-            placeholder='Your email address here...'
-            id='email'
-            type='email'
-            required
+            type='text'
+            id='fname'
+            name='firstname'
+            placeholder='Your name..'
           />
         </div>
-        <div class='form-group'>
-          <label for='message'>Message</label>
-          <textarea placeholder='Hi, I love your work!' required></textarea>
+      </div>
+      <div class='row'>
+        <div class='col-25'>
+          <label for='lname'>Email</label>
         </div>
-
-        <button type='submit'>Send</button>
-      </form>
-    </div>
+        <div class='col-75'>
+          <input
+            type='email'
+            id='email'
+            name='email'
+            placeholder='Your Email Address..'
+          />
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-25'>
+          <label for='subject'>Subject</label>
+        </div>
+        <div class='col-75'>
+          <textarea
+            id='subject'
+            name='subject'
+            placeholder='Write something..'
+            style='height:200px'></textarea>
+        </div>
+      </div>
+      <div class='row'>
+        <input type='submit' value='Submit' />
+      </div>
+    </form>
   </div>
-</section>
+</div>
 
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  .wrapper {
+    display: flex;
+    justify-content: center;
   }
-  input,
-  button,
+
+  /* Style inputs, select elements and textareas */
+  input[type="text"],
+  input[type="email"],
   select,
   textarea {
-    font: inherit;
-  }
-
-  .content-grid {
-    --padding-inline: 1rem;
-    --content-max-width: 900px;
-    --breakout-max-width: 1200px;
-
-    --breakout-size: calc(
-      (var(--breakout-max-width) - var(--content-max-width)) / 2
-    );
-
-    display: grid;
-    grid-template-columns:
-      [full-width-start] minmax(var(--padding-inline), 1fr)
-      [breakout-start] minmax(0, var(--breakout-size))
-      [content-start] min(
-        100% - (var(--padding-inline) * 2),
-        var(--content-max-width)
-      )
-      [content-end]
-      minmax(0, var(--breakout-size)) [breakout-end]
-      minmax(var(--padding-inline), 1fr) [full-width-end];
-  }
-
-  .content-grid > :not(.breakout, .full-width),
-  .full-width > :not(.breakout, .full-width) {
-    grid-column: content;
-  }
-
-  .content-grid > .breakout {
-    grid-column: breakout;
-  }
-
-  .content-grid > .full-width {
-    grid-column: full-width;
-
-    display: grid;
-    grid-template-columns: inherit;
-  }
-
-  /* .wrapper {
-    display: flex;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
-    padding-top: 20px;
-    padding-bottom: 20px;
-    align-items: center;
-    justify-content: center;
-  } */
-
-  form {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .form-group {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  }
-
-  h1 {
-    color: aliceblue;
-    font-size: 2.8rem;
-  }
-
-  label,
-  textarea {
-    text-transform: uppercase;
-    font-size: 1rem;
-    color: antiquewhite;
-  }
-
-  input,
-  textarea {
-    background: var(--surface-2);
-    color: var(--text-1);
-    border: var(--border);
-    border-radius: 16px;
-    padding: 1ex 2ex;
-
-    accent-color: var(--accent);
-  }
-
-  input:not(:placeholder-shown)valid {
-    outline-color: rgba(87, 199, 133, 1);
-  }
-
-  input:not(:placeholder-shown)invalid {
-    outline-color: rgba(218, 85, 85, 1);
-  }
-
-  .contact-form {
-    padding: 3rem;
-    --border-width: 2px;
-    border-radius: 3rem;
-    backdrop-filter: blur(36px) brightness(80%) sepia(20%) saturate(120%);
-    width: min(100% - 4rem, 1200px);
-    align-items: center;
-    justify-content: center;
-  }
-
-  .contact-form::before {
-    position: absolute;
-    content: "";
-    z-index: -1;
-    inset: 0;
-    border-radius: inherit;
-    border: var(--border-width) solid transparent;
-    backdrop-filter: brightness(180%) saturate(120%);
-    background: radial-gradient(var(--border-1), var(--border-2)) border-box;
-    mask:
-      radial-gradient(black, black) border-box,
-      radial-gradient(black, black) padding-box;
-    mask-composite: subtract;
-    align-items: center;
-    justify-content: center;
-  }
-
-  button {
-    cursor: pointer;
-    background-color: var(--accent);
-    color: var(--text-1);
-    padding: 1em 1.5em;
-    border: 0;
-    border-radius: 16px;
-
-    &:hover,
-    &:focus-visible {
-      background-color: hsl(from var(--accent) h s 30%);
-    }
-  }
-
-  * {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     box-sizing: border-box;
-    margin: 0;
+    resize: vertical;
   }
 
-  .hidden {
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
+  /* Style the label to display next to the inputs */
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
   }
-  :root {
-    --surface-0: hsl(229, 41%, 5%);
-    --surface-1: hsl(229, 25%, 12%);
-    --surface-2: hsl(234, 26%, 16%);
-    --text-1: hsl(229, 12%, 100%);
-    --text-2: hsl(229, 12%, 66%);
-    --required: hsl(321, 32%, 56%);
-    --accent: hsl(262, 84%, 52%);
-    --border: 1px solid hsl(229, 22%, 19%);
+
+  /* Style the submit button */
+  input[type="submit"] {
+    background-color: #04aa6d;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+
+  /* Style the container */
+  .container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+
+  /* Floating column for labels: 25% width */
+  .col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+  }
+
+  /* Floating column for inputs: 75% width */
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .col-25,
+    .col-75,
+    input[type="submit"] {
+      width: 100%;
+      margin-top: 0;
+    }
   }
 </style>

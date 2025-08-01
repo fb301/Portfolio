@@ -27,26 +27,22 @@ const projects: Project[] = [
 ---
 
 <section id='projects'>
-  <div class='flex'>
-    <div class='card-grid'>
-      {
-        projects.map((project) => (
-          <Card
-            imagePath={project.image}
-            name={project.name}
-            altText={project.name}
-          />
-        ))
-      }
-    </div>
+  <div class='card-grid'>
+    {
+      projects.map((project) => (
+        <Card
+          imagePath={project.image}
+          name={project.name}
+          altText={project.name}
+        />
+      ))
+    }
   </div>
-  <hr class='solid' />
 </section>
 
 <style>
   * {
     margin: 0;
-    padding: 20px;
     box-sizing: border-box;
   }
 
@@ -69,5 +65,12 @@ const projects: Project[] = [
     grid-row-gap: 20px;
     justify-content: center;
     padding-bottom: 20px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .card-grid {
+      display: flex;
+      flex-direction: column;
+    }
   }
 </style>
