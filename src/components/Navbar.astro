@@ -98,9 +98,10 @@ const currentPath = pathname.slice(1);
 
   .sticking {
     --border-width: 2px;
+    width: 200%;
     border-radius: 3rem;
     backdrop-filter: blur(12px) brightness(90%) saturate(120%);
-    transition: 300ms ease;
+    transition: 400ms ease;
   }
 
   .sticking::before {
@@ -110,7 +111,7 @@ const currentPath = pathname.slice(1);
     inset: 0;
     border-radius: inherit;
     border: var(--border-width) solid transparent;
-    background: radial-gradient(var(--border-1), var(--border-2)) border-box;
+    background: rgba(255, 255, 255, 0.185) border-box;
     mask:
       radial-gradient(black, black) border-box,
       radial-gradient(black, black) padding-box;
@@ -128,7 +129,7 @@ const currentPath = pathname.slice(1);
         const ratio = entry.intersectionRatio;
         if (cssElement) {
           console.log(ratio);
-          cssElement.style.width = `${Math.round(ratio * 150)}%`;
+          cssElement.style.width = `${Math.round(ratio * 200)}%`;
         }
 
         if (ratio != 1) {
