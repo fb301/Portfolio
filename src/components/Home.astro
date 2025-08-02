@@ -2,30 +2,13 @@
   <main class='flow'>
     <div id='hallo'>
       <div class='wrapper'>
-        <div class='diagonal'>
-          <p class='diagonal-text'>Hi there!</p>
-        </div>
+        <p class='diagonal-text'>Hi there!</p>
       </div>
     </div>
   </main>
 </section>
 
 <style>
-  @media screen and (max-width: 768px) {
-    .diagonal {
-      width:;
-    }
-  }
-  #background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    filter: blur(24px);
-  }
-
   *,
   *::before,
   *::after {
@@ -33,24 +16,7 @@
   }
 
   .wrapper {
-    padding-top: 40px;
-  }
-  .diagonal-text {
-    --clr-primary-300: hsl(219, 76%, 55%);
-    --clr-primary-400: hsl(219, 76%, 40%);
-
-    padding-top: 20px;
-    padding-bottom: 20px;
-    text-align: center;
-    text-transform: none;
-    font-weight: 900;
-    font-size: clamp(2.8rem, calc(1.85rem + 4.74vw), 5.52rem);
-    font-family: system-ui;
-    rotate: -4deg;
-    text-shadow:
-      2px 2px 0 var(--clr-primary-300),
-      4px 4px 0 rgba(42, 123, 155, 1),
-      6px 6px 0 var(--clr-primary-400);
+    padding-top: 50px;
   }
 
   .diagonal {
@@ -66,14 +32,48 @@
     isolation: isolate;
   }
 
+  .diagonal-text {
+    --clr-primary-300: hsl(219, 76%, 55%);
+    --clr-primary-400: hsl(219, 76%, 40%);
+    --skew-angle: -4deg;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    text-transform: none;
+    font-weight: 900;
+    font-size: clamp(2.8rem, calc(1.85rem + 4.74vw), 5.52rem);
+    font-family: system-ui;
+    rotate: var(--skew-angle);
+    text-shadow:
+      2px 2px 0 var(--clr-primary-300),
+      4px 4px 0 rgba(42, 123, 155, 1),
+      6px 6px 0 var(--clr-primary-400);
+  }
+
   .diagonal::after {
     content: "";
-    background: var(--background);
+    background: #222;
     position: absolute;
     z-index: -50;
     inset: 0;
     transform: skewY(var(--skew-angle));
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
-    transition: 0.3s;
+    border: solid;
+    border-image-slice: 1;
+    border-width: 1px;
+    border-image-source: var(--background);
+    border-left: none;
+    border-right: none;
+    transform-style: preserve-3d;
+  }
+
+  .diagonal-shadow::before {
+    content: "";
+    position: absolute;
+    z-index: -50;
+    inset: -40px;
+    transform: translate3d(10px, 10px, -1px);
+    transform: skewY(var(--skew-angle));
+    background: var(--background);
+    filter: blur(10px);
   }
 </style>
