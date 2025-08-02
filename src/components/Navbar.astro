@@ -27,30 +27,29 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
 ---
 
-<div class='flex justify-center w-full'>
-  <nav class='z-[100] md:top-6 md:bottom-auto bottom-0'>
-    <div class='nav-grabber' id='grabber'>
-      <div class='container mx-auto flex justify-center items-center p-3'>
-        <ul
-          class='flex w-full justify-between md:space-x-6 md:justify-center md:gap-12 gap-6'
-        >
-          {
-            navItems.map((navItem) => (
-              <li>
-                <a
-                  href={navItem.href}
-                  class={currentPath == navItem.href ? "active" : ""}
-                >
-                  {navItem.label}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
+<!-- <div class='flex justify-center w-full'> -->
+<nav class='z-[100] md:top-6 md:bottom-auto bottom-0'>
+  <div class='nav-grabber' id='grabber'>
+    <div class='container mx-auto flex justify-center items-center p-3'>
+      <ul
+        class='flex w-full justify-between md:space-x-6 md:justify-center md:gap-12 gap-6'
+      >
+        {
+          navItems.map((navItem) => (
+            <li>
+              <a
+                href={navItem.href}
+                class={currentPath == navItem.href ? "active" : ""}
+              >
+                {navItem.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </div>
-  </nav>
-</div>
+  </div>
+</nav>
 
 <style>
   :root {

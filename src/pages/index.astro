@@ -9,12 +9,13 @@ import background from "../assets/Animated Shape(3).svg";
 import "../styles/global.css";
 ---
 
-<Layout />
-<Navbar />
-<Home />
 <img id='background' src={background.src} alt='' fetchpriority='high' />
-<Projects />
-<Contact />
+<Layout>
+  <Navbar />
+  <Home />
+  <Projects />
+  <Contact />
+</Layout>
 <style>
   #background {
     position: fixed;
@@ -24,7 +25,7 @@ import "../styles/global.css";
     height: 100%;
     z-index: -1;
     opacity: 1;
-
+    overflow: hidden;
     filter: saturate(100%) brightness(300%) blur(6px);
   }
 </style>
