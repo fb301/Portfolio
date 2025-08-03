@@ -9,8 +9,13 @@ import background from "../assets/backgroundImg.svg";
 import "../styles/global.css";
 ---
 
-<img id='background' src={background.src} alt='' fetchpriority='high' />
 <Layout>
+  <img
+    id='background'
+    src={background.src}
+    alt='background'
+    fetchpriority='high'
+  />
   <Navbar />
   <Home />
   <Projects />

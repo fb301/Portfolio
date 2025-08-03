@@ -2,7 +2,7 @@
 interface Props {
   title?: string;
 }
-
+import background from "../assets/backgroundImg.svg";
 const { title = "Fredrik's Portfolio" } = Astro.props;
 ---
 
@@ -13,7 +13,7 @@ const { title = "Fredrik's Portfolio" } = Astro.props;
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' href='/favicon.svg' type='image/svg+xml' />
     <meta name='generator' content={Astro.generator} />
-    <meta name='description' content="Fredrik's Portfolio website." />
+    <meta name='description' content="'s Portfolio website." />
     <title>{title}</title>
   </head>
   <body>
