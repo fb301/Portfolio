@@ -120,32 +120,34 @@ const currentPath = pathname.slice(1);
 </style>
 
 <script>
-  const cssElement = document.getElementById("grabber");
+  document.addEventListener("astro:page-load", () => {
+    const cssElement = document.getElementById("grabber");
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        console.log(entry);
-        const ratio = entry.intersectionRatio;
-        if (cssElement) {
-          console.log(ratio);
-          cssElement.style.width = `${Math.round(ratio * 200)}%`;
-        }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          console.log(entry);
+          const ratio = entry.intersectionRatio;
+          if (cssElement) {
+            console.log(ratio);
+            cssElement.style.width = `${Math.round(ratio * 200)}%`;
+          }
 
-        if (ratio != 1) {
-          cssElement?.classList.add("sticking");
-        } else {
-          cssElement?.classList.remove("sticking");
-        }
-      });
-    },
-    {
-      threshold: Array.from({ length: 1000 }, (_, i) => i / 1000),
-    },
-  );
+          if (ratio != 1) {
+            cssElement?.classList.add("sticking");
+          } else {
+            cssElement?.classList.remove("sticking");
+          }
+        });
+      },
+      {
+        threshold: Array.from({ length: 1000 }, (_, i) => i / 1000),
+      },
+    );
 
-  const box = document.getElementById("hallo");
-  if (box) {
-    observer.observe(box);
-  }
+    const box = document.getElementById("hallo");
+    if (box) {
+      observer.observe(box);
+    }
+  });
 </script>

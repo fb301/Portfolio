@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "Munamii Cakery",
+    "imagePath": "/src/assets/oskar-kadaksoo-yxU--QW33GM-unsplash_480x320.webp",
+    "url": "projects/Munamii"
+  },
+  {
+    "id": "2",
+    "name": "Portfolio",
+    "imagePath": "/src/assets/pan-xiaozhen-twjBMeSe0Gg-unsplash_480x720.webp",
+    "url": ""
+  },
+  {
+    "id": "3",
+    "name": "Placeholder",
+    "imagePath": "/src/assets/milad-fakurian-Hqkx4vRhrIU-unsplash_480x720.webp",
+    "url": ""
+  },
+  {
+    "id": "4",
+    "name": "More Placeholder",
+    "imagePath": "/src/assets/patrick-federi-QS716x537_E-unsplash_480x720.webp",
+    "url": ""
+  }
+]

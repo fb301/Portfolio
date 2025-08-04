@@ -1,15 +1,17 @@
 ---
 import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
-import "a11y-dialog";
+import data from "../data.json";
 
 interface Props {
   imagePath: string;
   name: string;
   altText: string;
+  id: string;
 }
 
-const { imagePath, name, altText } = Astro.props;
+const { imagePath, name, altText, id } = Astro.props;
+
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/*.webp",
 );
@@ -20,336 +22,20 @@ if (!images[imagePath])
   );
 ---
 
-<button type='button' data-a11y-dialog-show='my-dialog'>
-  <div class='card'>
-    <div class='container'>
-      <Image src={images[imagePath]()} alt={altText} loading='lazy' />
+<article aria-label={name} transition:name={`/projects/${id}`}>
+  <a href={`/projects/${id}`}>
+    <div class='card'>
+      <div class='container'>
+        <Image src={images[imagePath]()} alt={altText} loading='eager' />
+      </div>
+      <div class='wrapper'>
+        <p class='card-name'>{name}</p>
+      </div>
     </div>
-    <div class='wrapper'>
-      <p class='card-name'>{name}</p>
-    </div>
-  </div></button
->
-
-<div
-  class='dialog-container'
-  id='my-dialog'
-  aria-hidden='true'
-  aria-labelledby='my-dialog-title'
-  aria-describedby='my-dialog-description'
->
-  <div class='dialog-overlay' data-a11y-dialog-hide></div>
-  <div class='dialog-content' role='document'>
-    <button
-      data-a11y-dialog-hide
-      class='dialog-close'
-      aria-label='Close this dialog window'
-    >
-      <svg class='svg-icon' viewBox='0 0 20 20'>
-        <path
-          fill='currentcolor'
-          d='M15.898,4.045c-0.271-0.272-0.713-0.272-0.986,0l-4.71,4.711L5.493,4.045c-0.272-0.272-0.714-0.272-0.986,0s-0.272,0.714,0,0.986l4.709,4.711l-4.71,4.711c-0.272,0.271-0.272,0.713,0,0.986c0.136,0.136,0.314,0.203,0.492,0.203c0.179,0,0.357-0.067,0.493-0.203l4.711-4.711l4.71,4.711c0.137,0.136,0.314,0.203,0.494,0.203c0.178,0,0.355-0.067,0.492-0.203c0.273-0.273,0.273-0.715,0-0.986l-4.711-4.711l4.711-4.711C16.172,4.759,16.172,4.317,15.898,4.045z'
-        ></path>
-      </svg>
-    </button>
-
-    <h1 id='my-dialog-title'>Subscribe to our newsletter</h1>
-
-    <p id='my-dialog-description'>
-      Fill in your email address to receive our newsletter!
-    </p>
-
-    <form>
-      <label for='email'>Email (required)</label>
-      <input
-        type='email'
-        name='EMAIL'
-        id='email'
-        placeholder='john.doe@gmail.com'
-        required
-      />
-      <button type='submit' name='button'>Sign up</button>
-    </form>
-  </div>
-</div>
-
-<script>
-  import A11yDialog from "a11y-dialog";
-  var dialogEl = document.getElementById("my-dialog");
-  if (dialogEl) {
-    var dialog = new A11yDialog(dialogEl);
-
-    dialog.on("show", function (event) {
-      const container = event.target;
-
-      // And if the event is the result of a UI interaction (i.e. was not triggered
-      // programmatically via `.show(..)`), the `detail` prop contains the original
-      // event
-      const customEvent = event as CustomEvent;
-      const target = customEvent.detail?.target;
-      const opener = target?.closest("[data-a11y-dialog-show]");
-
-      console.log(container, target, opener);
-    });
-
-    // To manually control the dialog:
-    // dialog.show()
-    // dialog.hide()
-    // dialog.destroy()
-  }
-</script>
+  </a>
+</article>
 
 <style>
-  /**
- * 1. Make the dialog container, and its child overlay spread across
- *    the entire window.
- */
-  .dialog-container,
-  .dialog-overlay {
-    position: fixed; /* 1 */
-    top: 0; /* 1 */
-    right: 0; /* 1 */
-    bottom: 0; /* 1 */
-    left: 0; /* 1 */
-  }
-
-  /**
-  * 1. Make sure the dialog container and all its descendants sits on
-  *    top of the rest of the page.
-  * 2. Make the dialog container a flex container to easily center the
-  *    dialog.
-  */
-  .dialog-container {
-    z-index: 2; /* 1 */
-    display: flex; /* 2 */
-  }
-
-  /**
-  * 1. Make sure the dialog container and all its descendants are not
-  *    visible and not focusable when it is hidden.
-  */
-  .dialog-container[aria-hidden="true"] {
-    display: none; /* 1 */
-  }
-
-  /**
-  * 1. Make the overlay look like an overlay.
-  */
-  .dialog-overlay {
-    background-color: rgb(43 46 56 / 0.9); /* 1 */
-    animation: fade-in 200ms both;
-  }
-
-  /**
-  * 1. Vertically and horizontally center the dialog in the page.
-  * 2. Make sure the dialog sits on top of the overlay.
-  * 3. Make sure the dialog has an opaque background.
-  */
-  .dialog-content {
-    margin: auto; /* 1 */
-    z-index: 2; /* 2 */
-    position: relative; /* 2 */
-    background-color: white; /* 3 */
-
-    animation:
-      fade-in 400ms 200ms both,
-      slide-up 400ms 200ms both;
-    padding: 1em;
-    max-width: 90%;
-    width: 600px;
-    border-radius: 5px;
-  }
-
-  @media screen and (min-width: 700px) {
-    .dialog-content {
-      padding: 2em;
-    }
-  }
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-  }
-
-  @keyframes slide-up {
-    from {
-      transform: translateY(10%);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .dialog-overlay,
-    .dialog-content {
-      animation: none;
-    }
-  }
-
-  .dialog-content h1 {
-    margin: 0;
-    font-size: 1.25em;
-  }
-
-  .dialog-close {
-    position: absolute;
-    top: 0.5em;
-    right: 0.5em;
-    border: 0;
-    padding: 0.25em;
-    background-color: transparent;
-    font-size: 1.5em;
-    width: 1.5em;
-    height: 1.5em;
-    text-align: center;
-    cursor: pointer;
-    transition: 0.15s;
-    border-radius: 50%;
-  }
-
-  .dialog-close:hover {
-    background-color: rgb(50 50 0 / 0.15);
-  }
-
-  @media screen and (min-width: 700px) {
-    .dialog-close {
-      top: 1em;
-      right: 1em;
-    }
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    font:
-      125% / 1.5 -apple-system,
-      BlinkMacSystemFont,
-      Segoe UI,
-      Helvetica,
-      Arial,
-      sans-serif;
-    padding: 2em 0;
-  }
-
-  h1 {
-    font-size: 1.6em;
-    line-height: 1.1;
-  }
-
-  h1 span {
-    color: #e50050;
-  }
-
-  h1,
-  h2 {
-    font-family: "ESPI Slab", sans-serif;
-    margin-bottom: 0;
-  }
-
-  .link-like,
-  a {
-    color: #2984c2;
-  }
-
-  .link-like:hover,
-  .link-like:active,
-  a:hover,
-  a:active {
-    color: #e50050;
-  }
-
-  /* -------------------------------------------------------------------------- *\
- * Helpers
- * -------------------------------------------------------------------------- */
-
-  .link-like {
-    background-color: transparent;
-    text-decoration: underline;
-    border: 0;
-    margin: 0;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-  }
-
-  /* -------------------------------------------------------------------------- *\
- * Layout
- * -------------------------------------------------------------------------- */
-
-  main {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 0 1em;
-  }
-
-  footer {
-    border-top: 1px solid silver;
-    padding: 20px 0;
-  }
-
-  /* -------------------------------------------------------------------------- *\
- * Form styling
- * -------------------------------------------------------------------------- */
-
-  form {
-    margin-top: 2em;
-  }
-
-  @media screen and (min-width: 700px) {
-    form {
-      display: flex;
-      flex-wrap: wrap;
-    }
-  }
-
-  form label {
-    font-weight: bold;
-    margin: 5px 10px 5px 0;
-    vertical-align: middle;
-    flex: 1 0 100%;
-  }
-
-  form input {
-    font: inherit;
-    padding: 0.25em;
-    border: 1px solid #81c784;
-    width: 100%;
-    margin: 0.25em 0 1em;
-  }
-
-  @media screen and (min-width: 700px) {
-    form input {
-      flex: 1;
-      border-right: 0;
-      width: auto;
-      margin: 0;
-    }
-  }
-
-  form button {
-    background-color: #81c784;
-    color: white;
-    border: 0;
-    font-family: inherit;
-    font-size: inherit;
-    padding: 8px 15px;
-    cursor: pointer;
-    transition: 0.15s;
-    display: inline-block;
-  }
-
-  form button:hover,
-  form button:active {
-    background-color: #66bb6a;
-  }
-
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
   .card {
     cursor: pointer;
     display: grid;
@@ -383,14 +69,15 @@ if (!images[imagePath])
   }
 
   .card:hover {
+    transform: scale(0.97);
     outline: 3px solid #000000;
     box-shadow: 15px 15px 0px 0px rgba(0, 0, 0, 1);
-    background-color: #292929be;
+    background-color: #282828;
     transition: background-color calc(var(--transform-speed) * 0.5) ease-in;
   }
 
   .card:hover img {
-    transform: scaleX(1.1);
+    transform: scaleX(1.05);
   }
 
   img {
@@ -402,6 +89,14 @@ if (!images[imagePath])
     height: 275px;
     max-width: 100%;
     background-color: #222;
-    transition: transform var(--transform-speed) ease-out;
+    transition: transform calc(var(--transform-speed) * 0.5) ease-out;
+  }
+
+  .card.is-clicked {
+    outline: 3px solid #000000;
+    box-shadow: 15px 15px 0px 0px rgba(0, 0, 0, 1);
+    background-color: #282828;
+    transition: background-color calc(var(--transform-speed) * 0.5) ease-in;
+    transform: scale(2, 2);
   }
 </style>

@@ -7,12 +7,6 @@
 </section>
 
 <style>
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
-
   .diagonal {
     --skew-angle: -4deg;
     --background: linear-gradient(
@@ -47,7 +41,7 @@
     overflow: hidden;
   }
 
-  .diagonal::after {
+  /* .diagonal::after {
     content: "";
     background: #222;
     position: absolute;
@@ -72,5 +66,5 @@
     transform: skewY(var(--skew-angle));
     background: var(--background);
     filter: blur(10px);
-  }
+  } */
 </style>

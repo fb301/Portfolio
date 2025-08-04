@@ -2,26 +2,36 @@
 import Card from "../components/Card.astro";
 
 interface Project {
+  id: string;
   name: string;
   image: string;
+  url: string;
 }
 
 const projects: Project[] = [
   {
+    id: "1",
     name: "Munamii Cakery",
     image: "/src/assets/oskar-kadaksoo-yxU--QW33GM-unsplash_480x320.webp",
+    url: "projects/Munamii",
   },
   {
+    id: "2",
     name: "Portfolio",
     image: "/src/assets/pan-xiaozhen-twjBMeSe0Gg-unsplash_480x720.webp",
+    url: "",
   },
   {
+    id: "3",
     name: "Placeholder",
     image: "/src/assets/milad-fakurian-Hqkx4vRhrIU-unsplash_480x720.webp",
+    url: "",
   },
   {
+    id: "4",
     name: "More Placeholder",
     image: "/src/assets/patrick-federi-QS716x537_E-unsplash_480x720.webp",
+    url: "",
   },
 ];
 ---
@@ -31,6 +41,7 @@ const projects: Project[] = [
     {
       projects.map((project) => (
         <Card
+          id={project.id}
           imagePath={project.image}
           name={project.name}
           altText={project.name}
@@ -41,11 +52,6 @@ const projects: Project[] = [
 </section>
 
 <style>
-  * {
-    margin: 0;
-    box-sizing: border-box;
-  }
-
   .flex {
     display: flex;
     margin: auto;
@@ -54,7 +60,6 @@ const projects: Project[] = [
 
   .card-grid {
     margin: 20px auto;
-
     display: grid;
     grid-template-columns: 450px 450px;
     grid-row: auto auto;
@@ -71,3 +76,4 @@ const projects: Project[] = [
     }
   }
 </style>
+<script></script>
