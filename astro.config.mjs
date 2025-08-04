@@ -21,9 +21,10 @@ export default defineConfig({
     ],
   },
   adapter: netlify({
+    edgeMiddleware: true,
     devFeatures: {
       environmentVariables: true,
-      images: false,
+      images: true,
     },
   }),
 });
