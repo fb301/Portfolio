@@ -7,19 +7,6 @@
 </section>
 
 <style>
-  .diagonal {
-    --skew-angle: -4deg;
-    --background: linear-gradient(
-      90deg,
-      rgba(42, 123, 155, 1) 0%,
-      rgba(87, 199, 133, 1) 50%,
-      rgba(237, 221, 83, 1) 100%
-    );
-
-    position: relative;
-    isolation: isolate;
-  }
-
   p {
     --skew-angle: -4deg;
     --clr-primary-300: hsl(219, 76%, 55%);
@@ -40,31 +27,4 @@
     text-align: center;
     overflow: hidden;
   }
-
-  /* .diagonal::after {
-    content: "";
-    background: #222;
-    position: absolute;
-    z-index: -50;
-    inset: 0;
-    transform: skewY(var(--skew-angle));
-    border: solid;
-    border-image-slice: 1;
-    border-width: 1px;
-    border-image-source: var(--background);
-    border-left: none;
-    border-right: none;
-    transform-style: preserve-3d;
-  }
-
-  .diagonal-shadow::before {
-    content: "";
-    position: absolute;
-    z-index: -50;
-    inset: -40px;
-    transform: translate3d(10px, 10px, -1px);
-    transform: skewY(var(--skew-angle));
-    background: var(--background);
-    filter: blur(10px);
-  } */
 </style>

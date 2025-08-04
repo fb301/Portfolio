@@ -21,12 +21,14 @@ import "../styles/global.css";
   </head>
   <body>
     <img
+      transition:persist=''
       id='background'
       src={background.src}
       alt='background'
       fetchpriority='high'
     />
     <img
+      transition:persist=''
       id='background'
       src={background.src}
       alt='background'
@@ -52,6 +54,6 @@ import "../styles/global.css";
     z-index: -1;
     opacity: 1;
     overflow: hidden;
-    filter: saturate(100%) brightness(500%) blur(6px);
+    filter: saturate(100%) contrast(300%) brightness(200%) blur(6px);
   }
 </style>

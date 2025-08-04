@@ -8,17 +8,17 @@ interface NavItem {
 const navItems: NavItem[] = [
   {
     label: "Home",
-    href: "#home",
+    href: "/#home",
     icon: "",
   },
   {
     label: "Projects",
-    href: "#projects",
+    href: "/#projects",
     icon: "",
   },
   {
     label: "Contact",
-    href: "#contact",
+    href: "/#contact",
     icon: "",
   },
 ];
@@ -27,7 +27,6 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
 ---
 
-<!-- <div class='flex justify-center w-full'> -->
 <nav class='z-[100] md:top-6 md:bottom-auto bottom-0'>
   <div class='nav-grabber' id='grabber'>
     <div class='container mx-auto flex justify-center items-center p-3'>
@@ -52,13 +51,6 @@ const currentPath = pathname.slice(1);
 </nav>
 
 <style>
-  :root {
-    --primary-1: hsla(250, 4%, 31%, 0.212);
-    --primary-2: hsla(260, 4%, 41%, 0.185);
-    --border-1: hsla(0, 3%, 46%, 0.25);
-    --border-2: hsla(0, 3%, 46%, 0.25);
-  }
-
   a {
     color: #f4f4f4;
     font-weight: 700;
@@ -66,7 +58,6 @@ const currentPath = pathname.slice(1);
   }
 
   .nav-grabber {
-    /* width: 1000px; */
     min-width: 424px;
     transition: 300ms ease;
     left: calc(1 / 2 * 100%);
@@ -76,24 +67,12 @@ const currentPath = pathname.slice(1);
   }
 
   nav {
-    /* border: 2px solid transparent;
-    border-radius: 3rem; */
     min-width: 424px;
     transition: 300ms ease;
     left: calc(1 / 2 * 100%);
     justify-content: center;
     position: fixed;
-
     translate: calc(calc(1 / 2 * 100%) /* 50% */ * -1);
-  }
-
-  nav a:active {
-    color: aliceblue !important;
-  }
-
-  a[aria-current="page"] {
-    color: white !important;
-    font-weight: bold;
   }
 
   .sticking {

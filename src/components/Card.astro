@@ -1,7 +1,6 @@
 ---
 import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
-import data from "../data.json";
 
 interface Props {
   imagePath: string;
@@ -48,6 +47,12 @@ if (!images[imagePath])
     transition: box-shadow calc(var(--transform-speed) * 0.5) ease-in-out;
   }
 
+  @media screen and (max-width: 768px) {
+    .card {
+      width: calc(100% - 1rem);
+    }
+  }
+
   .card-name {
     text-align: center;
     align-self: flex-end;
@@ -90,13 +95,5 @@ if (!images[imagePath])
     max-width: 100%;
     background-color: #222;
     transition: transform calc(var(--transform-speed) * 0.5) ease-out;
-  }
-
-  .card.is-clicked {
-    outline: 3px solid #000000;
-    box-shadow: 15px 15px 0px 0px rgba(0, 0, 0, 1);
-    background-color: #282828;
-    transition: background-color calc(var(--transform-speed) * 0.5) ease-in;
-    transform: scale(2, 2);
   }
 </style>

@@ -3,8 +3,8 @@ import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 import Navbar from "../../components/Navbar.astro";
 import Layout from "../../layouts/Layout.astro";
+import Contact from "../../components/Contact.astro";
 import data from "../../data.json";
-import "../../styles/global.css";
 
 export function getStaticPaths() {
   return data.map((project) => ({
@@ -20,7 +20,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/*.webp",
 );
 const project = data.find((p) => p.id === Astro.params.id) || data[0];
-const { name, imagePath, url } = project;
+const { name, imagePath } = project;
 
 if (!images[imagePath])
   throw new Error(
@@ -30,41 +30,53 @@ if (!images[imagePath])
 
 <Layout transition:persist>
   <section>
-    <div id='hallo'>
-      <Navbar />
-      <div class='diagonal-text'>
-        <p>{name}</p>
-      </div>
+    <div id='hallo'></div>
+    <Navbar />
+    <div class='diagonal-text'>
+      <p>{name}</p>
+    </div>
+    <div class='wrapper'>
       <div class='card'>
         <div class='container'>
           <Image src={images[imagePath]()} alt={name} loading='eager' />
         </div>
-        <div class='wrapper'>
-          <p class='card-name'>{name}</p>
-        </div>
+        <p class='card-name'>{name}</p>
+        <form>
+          <input
+            type='button'
+            class='button'
+            value='Go back!'
+            onclick='history.back()'
+          />
+        </form>
       </div>
     </div>
   </section>
+  <Contact />
 </Layout>
 <style>
-  section {
-    padding-bottom: 1000px;
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
   }
+
   .card {
-    display: grid;
+    width: 50vw;
+    height: 75vh;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
-    padding-top: 30px;
-    padding-bottom: 20px;
+    padding: 20px;
     border-radius: 2.5rem;
-    --transform-speed: 333ms;
-    transition: box-shadow calc(var(--transform-speed) * 0.5) ease-in-out;
-    transform: scale(0.97);
     outline: 3px solid #000000;
     box-shadow: 15px 15px 0px 0px rgba(0, 0, 0, 1);
     background-color: #282828;
-    transition: background-color calc(var(--transform-speed) * 0.5) ease-in;
+  }
+
+  @media screen and (max-width: 768px) {
+    .card {
+      width: calc(100% - 1rem);
+    }
   }
 
   .card-name {
@@ -79,13 +91,6 @@ if (!images[imagePath])
     justify-content: center;
     padding: 20px;
     padding-top: 50px;
-    box-sizing: border-box;
-  }
-
-  .card::after {
-    outline: 3px solid #00000000;
-    box-shadow: 15px 15px 0px 0px rgba(0, 0, 0, 0);
-    background-color: #29292900;
   }
 
   img {
@@ -97,7 +102,6 @@ if (!images[imagePath])
     height: 275px;
     max-width: 100%;
     background-color: #222;
-    transition: transform calc(var(--transform-speed) * 0.5) ease-out;
   }
 
   .diagonal-text {
@@ -109,15 +113,23 @@ if (!images[imagePath])
 
   .diagonal-text p {
     --skew-angle: -4deg;
-    --clr-primary-300: hsl(219, 76%, 55%);
-    --clr-primary-400: hsl(219, 76%, 40%);
     font-weight: 900;
     font-size: clamp(2.8rem, calc(1.85rem + 4.74vw), 5.52rem);
     font-family: system-ui;
     rotate: var(--skew-angle);
     text-shadow:
-      2px 2px 0 var(--clr-primary-300),
+      2px 2px 0 hsl(219, 76%, 55%),
       4px 4px 0 rgba(42, 123, 155, 1),
-      6px 6px 0 var(--clr-primary-400);
+      6px 6px 0 hsl(219, 76%, 40%);
+  }
+
+  .button {
+    text-decoration: none;
+    color: hsl(212, 22%, 28%);
+    font-weight: 700;
+    padding: 0.5em 1.25em;
+    border-radius: 0.125em;
+    background: hsl(50, 100%, 50%);
+    box-shadow: 10px 8px 0 rgba(0, 0, 0, 1);
   }
 </style>
