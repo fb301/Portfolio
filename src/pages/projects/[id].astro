@@ -20,7 +20,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/*.webp",
 );
 const project = data.find((p) => p.id === Astro.params.id) || data[0];
-const { name, imagePath } = project;
+const { name, imagePath, description, tech, next } = project;
 
 if (!images[imagePath])
   throw new Error(
@@ -31,7 +31,6 @@ if (!images[imagePath])
 <Layout transition:persist>
   <section>
     <div id='hallo'></div>
-    <Navbar />
     <div class='diagonal-text'>
       <p>{name}</p>
     </div>
@@ -40,43 +39,66 @@ if (!images[imagePath])
         <div class='container'>
           <Image src={images[imagePath]()} alt={name} loading='eager' />
         </div>
-        <p class='card-name'>{name}</p>
-        <form>
-          <input
-            type='button'
-            class='button'
-            value='Go back!'
-            onclick='history.back()'
-          />
-        </form>
+        <p class='card-name'>Project: {name}</p>
+        <p class='card-name'>Technologies: {tech}</p>
+        <p class='card-name card-name-mobile'>Description: {description}</p>
+        <div class='btn-wrapper'>
+          <a href={`/`}><input type='button' class='btn-grad' value='Back' /></a
+          >
+
+          <a href={`/projects/${next}`}
+            ><input type='button' class='btn-grad' value='Next' /></a
+          >
+        </div>
       </div>
     </div>
   </section>
-  <Contact />
 </Layout>
+
+<Contact />
+
 <style>
   .wrapper {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    align-content: center;
+  }
+
+  .btn-wrapper {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0 -1px;
+    border-radius: 2rem;
+    background-image: linear-gradient(135deg, #3e3e3e 10%, #1f1f1f 100%);
   }
 
   .card {
+    position: relative;
     width: 50vw;
     height: 75vh;
-    align-items: center;
     justify-content: center;
     padding: 20px;
-    border-radius: 2.5rem;
-    outline: 3px solid #000000;
-    box-shadow: 15px 15px 6px 0px rgba(0, 0, 0, 1);
-    background-color: #282828;
+    border: 2px solid #fff;
+    border-radius: 2rem;
   }
 
-  @media screen and (max-width: 768px) {
-    .card {
-      width: calc(100% - 1rem);
-    }
+  .card::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 1px 0;
+    border-radius: 2rem;
+    background-image: linear-gradient(135deg, #2b2b2b 0%, #222 100%);
+    box-shadow: 15px 15px 6px 0px rgba(0, 0, 0, 0.5);
   }
 
   .card-name {
@@ -92,20 +114,30 @@ if (!images[imagePath])
     padding: 20px;
     padding-top: 50px;
   }
+  .card::before img {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    inset: 0 -1px;
+    border-radius: 2rem;
+    background-image: linear-gradient(135deg, #3e3e3e 10%, #222 100%);
+  }
 
   img {
-    border: 3px solid;
+    position: relative;
     border-radius: 2.5rem;
+    margin-left: auto;
+    margin-right: auto;
     display: block;
     object-fit: cover;
-    width: 375px;
-    height: 275px;
+    width: 500px;
+    height: 325px;
     max-width: 100%;
     background-color: #222;
+    box-shadow: 5px 5px 6px 0px rgba(0, 0, 0, 0.4);
   }
 
   .diagonal-text {
-    padding-top: 40px;
     padding-bottom: 40px;
     text-align: center;
     overflow: hidden;
@@ -123,13 +155,45 @@ if (!images[imagePath])
       6px 6px 0 hsl(219, 76%, 40%);
   }
 
-  .button {
+  .btn-grad {
+    background-image: linear-gradient(
+      to right,
+      #1f1f1f 0%,
+      #333333 51%,
+      #222 100%
+    );
+  }
+  .btn-grad {
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #fff;
+    box-shadow: 2px 2px 2px #000000a1;
+    border: 1px solid;
+    border-radius: 10px;
+    display: block;
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  .btn-grad:hover {
+    cursor: pointer;
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
     text-decoration: none;
-    color: hsl(212, 22%, 28%);
-    font-weight: 700;
-    padding: 0.5em 1.25em;
-    border-radius: 0.125em;
-    background: hsl(50, 100%, 50%);
-    box-shadow: 10px 8px 0 rgba(0, 0, 0, 1);
+  }
+
+  @media screen and (max-width: 768px) {
+    .card {
+      padding: 0px;
+      width: calc(100% - 1rem);
+      height: calc(100% -1rem);
+    }
+    .card-name-mobile {
+      display: hidden;
+    }
   }
 </style>

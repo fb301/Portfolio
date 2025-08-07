@@ -25,7 +25,7 @@ if (!images[imagePath])
   <a href={`/projects/${id}`}>
     <div class='card'>
       <div class='container'>
-        <Image src={images[imagePath]()} alt={altText} loading='eager' />
+        <Image src={images[imagePath]()} alt={altText} loading='lazy' />
       </div>
       <div class='wrapper'>
         <p class='card-name'>{name}</p>
@@ -36,6 +36,7 @@ if (!images[imagePath])
 
 <style>
   .card {
+    position: relative;
     cursor: pointer;
     display: grid;
     align-items: center;
@@ -67,25 +68,50 @@ if (!images[imagePath])
     box-sizing: border-box;
   }
 
-  .card::after {
-    outline: 3px solid #00000000;
-    box-shadow: 15px 15px 0px 0px rgba(0, 0, 0, 0);
-    background-color: #29292900;
+  .card:hover::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -2px;
+    border-radius: 2rem;
+    background-image: linear-gradient(#fff 0%, #ffffffa2 100%);
+    box-shadow: 15px 15px 6px 0px rgba(0, 0, 0, 0.5);
   }
 
   .card:hover {
-    outline: 3px solid #000000;
-    box-shadow: 15px 15px 6px 0px rgba(0, 0, 0, 1);
-    background-color: #282828;
+    position: relative;
+    /* border: 2px solid #fff;
+    border-radius: 2rem; */
+
     transition: background-color calc(var(--transform-speed) * 0.5) ease-in;
   }
 
+  .card:hover::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 1px;
+    border-radius: 2rem;
+    background-image: linear-gradient(135deg, #292929 0%, #222 100%);
+  }
+  .card:hover::before img {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    inset: 0 -1px;
+    border-radius: 2rem;
+    background-image: linear-gradient(135deg, #3e3e3e 10%, #222 100%);
+  }
+
   .card:hover img {
-    transform: scaleX(1.05);
+    border: none;
+    transform: scaleX(1.07);
+    box-shadow: 5px 5px 6px 0px rgba(0, 0, 0, 0.4);
   }
 
   img {
-    border: 2px solid;
+    position: relative;
+    border: 2px solid #fff;
     border-radius: 2rem;
     display: block;
     object-fit: cover;

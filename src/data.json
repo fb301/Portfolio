@@ -3,24 +3,32 @@
     "id": "1",
     "name": "Munamii Cakery",
     "imagePath": "/src/assets/oskar-kadaksoo-yxU--QW33GM-unsplash_480x320.webp",
-    "url": "projects/Munamii"
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "tech": "React Router, Tailwind, Typescript",
+    "next": "2"
   },
   {
     "id": "2",
     "name": "Portfolio",
     "imagePath": "/src/assets/pan-xiaozhen-twjBMeSe0Gg-unsplash_480x720.webp",
-    "url": ""
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "tech": "Astro, Typescript",
+    "next": "3"
   },
   {
     "id": "3",
     "name": "Placeholder",
     "imagePath": "/src/assets/milad-fakurian-Hqkx4vRhrIU-unsplash_480x720.webp",
-    "url": ""
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "tech": "",
+    "next": "4"
   },
   {
     "id": "4",
     "name": "More Placeholder",
     "imagePath": "/src/assets/patrick-federi-QS716x537_E-unsplash_480x720.webp",
-    "url": ""
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "tech": "",
+    "next": "1"
   }
 ]
