@@ -8,9 +8,11 @@ import netlify from "@astrojs/netlify";
 import playformCompress from "@playform/compress";
 import { visualizer } from "rollup-plugin-visualizer";
 
+import compressor from "astro-compressor";
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [playformCompress()],
+  integrations: [playformCompress(), compressor()],
   vite: {
     plugins: [
       tailwindcss(),
