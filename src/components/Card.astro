@@ -25,7 +25,7 @@ if (!images[imagePath])
   <a href={`/projects/${id}`}>
     <div class='card'>
       <div class='container'>
-        <Image src={images[imagePath]()} alt={altText} loading='lazy' />
+        <Image src={images[imagePath]()} alt={altText} loading='eager' />
       </div>
       <div class='wrapper'>
         <p class='card-name'>{name}</p>
@@ -74,7 +74,13 @@ if (!images[imagePath])
     z-index: -1;
     inset: -2px;
     border-radius: 2rem;
-    background-image: linear-gradient(#fff 0%, #ffffffa2 100%);
+    background-image: linear-gradient(
+      to bottom right,
+      #e1d9d1 0%,
+      #008679 5%,
+      #008678c4 50%,
+      #025858 100%
+    );
     box-shadow: 15px 15px 6px 0px rgba(0, 0, 0, 0.5);
   }
 
@@ -92,7 +98,7 @@ if (!images[imagePath])
     z-index: -1;
     inset: 1px;
     border-radius: 2rem;
-    background-image: linear-gradient(135deg, #292929 0%, #222 100%);
+    background-image: linear-gradient(135deg, #fff 1%, #292929 2%, #222 100%);
   }
   .card:hover::before img {
     content: "";
@@ -111,7 +117,7 @@ if (!images[imagePath])
 
   img {
     position: relative;
-    border: 2px solid #fff;
+    border: 2px solid #e1d9d1;
     border-radius: 2rem;
     display: block;
     object-fit: cover;

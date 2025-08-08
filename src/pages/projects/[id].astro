@@ -37,7 +37,11 @@ if (!images[imagePath])
     <div class='wrapper'>
       <div class='card'>
         <div class='container'>
-          <Image src={images[imagePath]()} alt={name} loading='eager' />
+          <a href={`/`}><input type='button' class='btn-grad' value='Back' /></a
+          ><Image src={images[imagePath]()} alt={name} loading='eager' />
+          <a href={`/projects/${next}`}
+            ><input type='button' class='btn-grad' value='Next' /></a
+          >
         </div>
         <p class='card-name'>Project: {name}</p>
         <p class='card-name'>Technologies: {tech}</p>
@@ -110,9 +114,16 @@ if (!images[imagePath])
   }
 
   .container {
+    display: flex;
     justify-content: center;
     padding: 20px;
     padding-top: 50px;
+  }
+
+  .container .btn-grad {
+    /* align-items: center;
+    justify-content: center; */
+    transform: translateY(175%);
   }
   .card::before img {
     content: "";
@@ -158,7 +169,7 @@ if (!images[imagePath])
   .btn-grad {
     background-image: linear-gradient(
       to right,
-      #1f1f1f 0%,
+      #363636 0%,
       #333333 51%,
       #222 100%
     );
@@ -174,7 +185,7 @@ if (!images[imagePath])
     box-shadow: 2px 2px 2px #000000a1;
     border: 1px solid;
     border-radius: 10px;
-    display: block;
+    display: flex;
     font-weight: 600;
     font-size: 20px;
   }
@@ -193,6 +204,12 @@ if (!images[imagePath])
       height: calc(100% -1rem);
     }
     .card-name-mobile {
+      display: hidden;
+    }
+    .container .btn-grad {
+      /* align-items: center;
+    justify-content: center; */
+      transform: translateY(175%);
       display: hidden;
     }
   }
