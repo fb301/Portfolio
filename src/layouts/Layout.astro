@@ -20,24 +20,20 @@ import "../styles/global.css";
     <ClientRouter />
   </head>
   <body>
-    <img
+    <!-- <img class='background' src={background.src} alt='background' /> -->
+    <!-- <img
       transition:persist=''
       class='background'
       src={background.src}
       alt='background'
       fetchpriority='high'
-    />
-    <img
-      transition:persist=''
-      class='background'
-      src={background.src}
-      alt='background'
-      fetchpriority='high'
-    />
+    /> -->
     <slot />
   </body>
 </html>
 <style>
+  @import url("https://fonts.googleapis.com/css2?family=Fira+Code&family=Oi&display=swap");
+
   *,
   *::before,
   *::after {
@@ -55,5 +51,12 @@ import "../styles/global.css";
     z-index: -1;
     overflow: hidden;
     filter: saturate(100%) contrast(300%) brightness(200%) blur(3.5px);
+  }
+
+  .fira-code-uniqueID {
+    font-family: "Fira Code", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
   }
 </style>

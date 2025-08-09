@@ -4,14 +4,33 @@
       <p>Hi there!</p>
     </div>
   </div>
+  <div class='wrapper'>
+    <p>Front End &#183; Back End &#183; Infrastructure</p>
+  </div>
 </section>
 
 <style>
+  .diagonal-text {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    text-align: center;
+    overflow: hidden;
+  }
+
   p {
+    font-family: "Fira Code", monospace;
+  }
+
+  .wrapper {
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .diagonal-text > p {
     --skew-angle: -4deg;
     --clr-primary-300: hsl(219, 76%, 55%);
     --clr-primary-400: hsl(219, 76%, 40%);
-    font-weight: 900;
+    font-weight: 700;
     font-size: clamp(2.8rem, calc(1.85rem + 4.74vw), 5.52rem);
     font-family: system-ui;
     rotate: var(--skew-angle);
@@ -19,12 +38,5 @@
       2px 2px 0 var(--clr-primary-300),
       4px 4px 0 rgba(42, 123, 155, 1),
       6px 6px 0 var(--clr-primary-400);
-  }
-
-  .diagonal-text {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    text-align: center;
-    overflow: hidden;
   }
 </style>
