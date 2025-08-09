@@ -28,15 +28,15 @@
 
   .diagonal-text > p {
     --skew-angle: -4deg;
-    --clr-primary-300: hsl(219, 76%, 55%);
-    --clr-primary-400: hsl(219, 76%, 40%);
+    --clr-primary-300: oklch(0.5753 0.184 261.41);
+    --clr-primary-400: oklch(0.4562 0.1701 261.45);
     font-weight: 700;
     font-size: clamp(2.8rem, calc(1.85rem + 4.74vw), 5.52rem);
     font-family: system-ui;
     rotate: var(--skew-angle);
     text-shadow:
       2px 2px 0 var(--clr-primary-300),
-      4px 4px 0 rgba(42, 123, 155, 1),
+      4px 4px 0 oklch(0.5486 0.0909 228.42),
       6px 6px 0 var(--clr-primary-400);
   }
 </style>

@@ -1,9 +1,11 @@
 @import "tailwindcss";
 
 html {
-  background-color: #222;
   scroll-behavior: smooth;
   box-sizing: border-box;
+  background-image: radial-gradient(circle, #222, #111);
+  scrollbar-color: oklch(0.715 0.143 215.221) #111;
+  scrollbar-width: thin;
 }
 
 body {
@@ -13,7 +15,7 @@ body {
 }
 
 p {
-  color: #f2f7ff;
+  color: #fff;
 }
 
 section {

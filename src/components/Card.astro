@@ -76,10 +76,10 @@ if (!images[imagePath])
     border-radius: 2rem;
     background-image: linear-gradient(
       to bottom right,
-      #fff 1%,
-      #05c5b2 5%,
-      #008679 50%,
-      #025858 100%
+
+      oklch(0.865 0.127 207.078) 1%,
+      oklch(0.789 0.154 211.53) 50%,
+      oklch(0.715 0.143 215.221) 100%
     );
     box-shadow: 15px 15px 6px 0px rgba(0, 0, 0, 0.5);
   }
@@ -100,10 +100,10 @@ if (!images[imagePath])
     border-radius: 2rem;
     background-image: linear-gradient(
       135deg,
-      #fff 1%,
-      #292929 2%,
-      #1f1f1f 50%,
-      #222 100%
+      oklch(100% 0 0) 1%,
+      oklch(34.07% 0 0) 2%,
+      oklch(28.09% 0 0) 50%,
+      oklch(25.2% 0 0) 100%
     );
   }
   .card:hover::before img {
@@ -112,25 +112,29 @@ if (!images[imagePath])
     z-index: 0;
     inset: 0 -1px;
     border-radius: 2rem;
-    background-image: linear-gradient(135deg, #3e3e3e 10%, #222 100%);
+    background-image: linear-gradient(
+      135deg,
+      oklch(36.39% 0 0) 10%,
+      oklch(25.2% 0 0) 100%
+    );
   }
 
   .card:hover img {
     border: none;
     transform: scaleX(1.07);
-    box-shadow: 5px 5px 6px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 5px 5px 6px 0px oklch(0% 0 0);
   }
 
   img {
     position: relative;
-    border: 2px solid #e1d9d1;
+    border: 2px solid oklch(88.94% 0.014 67.6);
     border-radius: 10% 25%;
     display: block;
     object-fit: cover;
     width: 375px;
     height: 275px;
     max-width: 100%;
-    background-color: #222;
+    background-color: oklch(25.2% 0 0);
     transition: transform calc(var(--transform-speed) * 0.5) ease-out;
   }
 </style>
