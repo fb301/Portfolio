@@ -1,10 +1,18 @@
 @import "tailwindcss";
 
+:root {
+  --color-1: oklch(0.715 0.143 215.221);
+  --primary-1: hsla(250, 4%, 31%, 0.212);
+  --primary-2: hsla(260, 4%, 41%, 0.185);
+  --border-1: hsla(0, 84%, 19%, 0.25);
+  --border-2: hsla(0, 3%, 46%, 0.25);
+}
+
 html {
   scroll-behavior: smooth;
   box-sizing: border-box;
   background-image: radial-gradient(circle, #222, #111);
-  scrollbar-color: oklch(0.715 0.143 215.221) #111;
+  scrollbar-color: var(--color-1) oklch(35.618% 0.00004 271.152);
   scrollbar-width: thin;
 }
 
@@ -15,7 +23,7 @@ body {
 }
 
 p {
-  color: #fff;
+  color: oklch(100% 0 0);
 }
 
 section {

@@ -78,7 +78,7 @@ if (!images[imagePath])
       to bottom right,
 
       oklch(0.865 0.127 207.078) 1%,
-      oklch(0.789 0.154 211.53) 50%,
+      var(--color-1) 50%,
       oklch(0.715 0.143 215.221) 100%
     );
     box-shadow: 15px 15px 6px 0px rgba(0, 0, 0, 0.5);
@@ -127,7 +127,7 @@ if (!images[imagePath])
 
   img {
     position: relative;
-    border: 2px solid oklch(88.94% 0.014 67.6);
+    border: 2px solid oklch(80% 0.014 67.6);
     border-radius: 10% 25%;
     display: block;
     object-fit: cover;
@@ -137,4 +137,6 @@ if (!images[imagePath])
     background-color: oklch(25.2% 0 0);
     transition: transform calc(var(--transform-speed) * 0.5) ease-out;
   }
+
+  /* hue-slider, calc*/
 </style>

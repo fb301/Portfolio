@@ -4,7 +4,6 @@ interface Props {
 }
 import { ClientRouter } from "astro:transitions";
 const { title = "Fredrik's Portfolio" } = Astro.props;
-import background from "../assets/backgroundImg.svg";
 import "../styles/global.css";
 ---
 
@@ -23,7 +22,7 @@ import "../styles/global.css";
     <slot />
   </body>
 </html>
-<style>
+<style is:global>
   @import url("https://fonts.googleapis.com/css2?family=Fira+Code&family=Oi&display=swap");
 
   *,
