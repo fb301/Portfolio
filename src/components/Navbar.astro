@@ -27,27 +27,23 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
 ---
 
-<nav class='z-[100] md:top-6 md:bottom-auto bottom-0'>
-  <div class='nav-grabber' id='grabber'>
-    <div class='container mx-auto flex justify-center items-center p-3'>
-      <ul
-        class='flex w-full justify-between md:space-x-6 md:justify-center md:gap-12 gap-6'
-      >
-        {
-          navItems.map((navItem) => (
-            <li>
-              <a
-                href={navItem.href}
-                class={currentPath == navItem.href ? "active" : ""}
-              >
-                {navItem.label}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </div>
+<!-- 'z-[100] md:top-6 md:bottom-auto bottom-0' --><!-- 'container mx-auto flex justify-center items-center p-3' --><!-- 'flex w-full justify-between md:space-x-6 md:justify-center md:gap-12 gap-6' -->
+<nav id='grabber'>
+  <!-- <div class='nav-grabber' id='grabber'> -->
+  <ul>
+    {
+      navItems.map((navItem) => (
+        <li>
+          <a
+            href={navItem.href}
+            class={currentPath == navItem.href ? "active" : ""}
+          >
+            {navItem.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 </nav>
 
 <style>
@@ -57,30 +53,42 @@ const currentPath = pathname.slice(1);
     text-shadow: 2px 2px 0px #000000;
   }
 
-  .nav-grabber {
-    min-width: 500px;
+  nav {
+    display: flex;
+    padding: 10px;
+    z-index: 100;
+    width: calc(100% - 2rem);
+    min-width: 450px;
     transition: 300ms ease;
     left: calc(1 / 2 * 100%);
     justify-content: center;
     position: fixed;
     translate: calc(calc(1 / 2 * 100%) /* 50% */ * -1);
+    transform: translateY(50%);
   }
 
-  nav {
-    min-width: 500px;
-    transition: 300ms ease;
-    left: calc(1 / 2 * 100%);
+  ul {
+    list-style-type: none;
     justify-content: center;
-    position: fixed;
-    translate: calc(calc(1 / 2 * 100%) /* 50% */ * -1);
+    align-items: center;
+  }
+
+  li {
+    display: inline;
+    padding: 14px 16px;
+  }
+
+  li a {
+    text-align: center;
+    text-decoration: none;
   }
 
   .sticking {
     --border-width: 2px;
-    width: 200%;
+    /* width: 100%; */
     border-radius: 3rem;
     backdrop-filter: blur(12px) brightness(90%) saturate(120%);
-    transition: 400ms ease;
+    transition: 300ms ease;
   }
 
   .sticking::before {
@@ -95,6 +103,7 @@ const currentPath = pathname.slice(1);
       radial-gradient(black, black) border-box,
       radial-gradient(black, black) padding-box;
     mask-composite: subtract;
+    transition: 300ms ease;
   }
 </style>
 
@@ -107,15 +116,15 @@ const currentPath = pathname.slice(1);
         entries.forEach((entry) => {
           console.log(entry);
           const ratio = entry.intersectionRatio;
-          if (cssElement) {
-            console.log(ratio);
-            cssElement.style.width = `${Math.round(ratio * 200)}%`;
-          }
 
           if (ratio != 1) {
             cssElement?.classList.add("sticking");
           } else {
             cssElement?.classList.remove("sticking");
+          }
+          if (cssElement) {
+            console.log(ratio);
+            cssElement.style.width = `${Math.round(ratio * 90)}%`;
           }
         });
       },
