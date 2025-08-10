@@ -27,9 +27,7 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
 ---
 
-<!-- 'z-[100] md:top-6 md:bottom-auto bottom-0' --><!-- 'container mx-auto flex justify-center items-center p-3' --><!-- 'flex w-full justify-between md:space-x-6 md:justify-center md:gap-12 gap-6' -->
 <nav id='grabber'>
-  <!-- <div class='nav-grabber' id='grabber'> -->
   <ul>
     {
       navItems.map((navItem) => (
