@@ -55,9 +55,8 @@ const currentPath = pathname.slice(1);
     display: flex;
     padding: 10px;
     z-index: 100;
-    width: calc(100% - 2rem);
     min-width: 450px;
-    transition: 300ms ease;
+    transition: 500ms ease;
     left: calc(1 / 2 * 100%);
     justify-content: center;
     position: fixed;
@@ -83,10 +82,9 @@ const currentPath = pathname.slice(1);
 
   .sticking {
     --border-width: 2px;
-    /* width: 100%; */
     border-radius: 3rem;
-    backdrop-filter: blur(12px) brightness(90%) saturate(120%);
-    transition: 300ms ease;
+    backdrop-filter: blur(12px) saturate(120%);
+    /* transition: 500ms ease; */
   }
 
   .sticking::before {
@@ -101,7 +99,7 @@ const currentPath = pathname.slice(1);
       radial-gradient(black, black) border-box,
       radial-gradient(black, black) padding-box;
     mask-composite: subtract;
-    transition: 300ms ease;
+    transition: 500ms ease;
   }
 </style>
 

@@ -77,18 +77,15 @@ if (!images[imagePath])
     background-image: linear-gradient(
       to bottom right,
 
-      oklch(0.865 0.127 207.078) 1%,
-      var(--color-1) 50%,
-      oklch(0.715 0.143 215.221) 100%
+      oklch(from var(--color-1) l c h) 5%,
+      oklch(from var(--color-1) calc(l - 0) c calc(h - 20)) 50%,
+      oklch(from var(--color-1) calc(l - 0.1) c calc(h - 40)) 100%
     );
     box-shadow: 15px 15px 6px 0px rgba(0, 0, 0, 0.5);
   }
 
   .card:hover {
     position: relative;
-    /* border: 2px solid #fff;
-    border-radius: 2rem; */
-
     transition: background-color calc(var(--transform-speed) * 0.5) ease-in;
   }
 
@@ -101,9 +98,9 @@ if (!images[imagePath])
     background-image: linear-gradient(
       135deg,
       oklch(100% 0 0) 1%,
-      oklch(34.07% 0 0) 2%,
-      oklch(28.09% 0 0) 50%,
-      oklch(25.2% 0 0) 100%
+      oklch(40% 0 0) 2%,
+      oklch(30% 0 0) 50%,
+      oklch(20% 0 0) 100%
     );
   }
   .card:hover::before img {
@@ -137,6 +134,4 @@ if (!images[imagePath])
     background-color: oklch(25.2% 0 0);
     transition: transform calc(var(--transform-speed) * 0.5) ease-out;
   }
-
-  /* hue-slider, calc*/
 </style>
